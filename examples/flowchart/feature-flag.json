@@ -1,0 +1,164 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "Feature Flag Rollout",
+    "description": "Progressive feature deployment with flags",
+    "author": "AIGP Examples",
+    "tags": [
+      "flowchart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "deploy",
+        "type": "start",
+        "label": "Deploy Code",
+        "data": {}
+      },
+      {
+        "id": "flag_off",
+        "type": "process",
+        "label": "Feature Flag OFF",
+        "data": {}
+      },
+      {
+        "id": "internal",
+        "type": "process",
+        "label": "Enable for Internal",
+        "data": {}
+      },
+      {
+        "id": "beta",
+        "type": "process",
+        "label": "Enable for Beta Users",
+        "data": {}
+      },
+      {
+        "id": "monitor",
+        "type": "process",
+        "label": "Monitor Metrics",
+        "data": {}
+      },
+      {
+        "id": "healthy",
+        "type": "decision",
+        "label": "Healthy?",
+        "data": {}
+      },
+      {
+        "id": "percentage",
+        "type": "process",
+        "label": "50% Rollout",
+        "data": {}
+      },
+      {
+        "id": "full",
+        "type": "process",
+        "label": "100% Rollout",
+        "data": {}
+      },
+      {
+        "id": "rollback",
+        "type": "process",
+        "label": "Rollback",
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "label": "Complete",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "deploy",
+        "target": "flag_off",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "flag_off",
+        "target": "internal",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "internal",
+        "target": "beta",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "beta",
+        "target": "monitor",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "monitor",
+        "target": "healthy",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "healthy",
+        "target": "percentage",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "healthy",
+        "target": "rollback",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "percentage",
+        "target": "monitor",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "flow",
+        "source": "percentage",
+        "target": "full",
+        "data": {}
+      },
+      {
+        "id": "e9",
+        "type": "flow",
+        "source": "full",
+        "target": "end",
+        "data": {}
+      },
+      {
+        "id": "e10",
+        "type": "flow",
+        "source": "rollback",
+        "target": "end",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

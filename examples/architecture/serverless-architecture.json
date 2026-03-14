@@ -1,0 +1,129 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "architecture",
+  "metadata": {
+    "title": "Serverless Application Architecture",
+    "description": "AWS Lambda-based serverless system",
+    "author": "AIGP Examples",
+    "tags": [
+      "architecture",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "api",
+        "type": "component",
+        "label": "API Gateway",
+        "data": {
+          "technology": "AWS"
+        }
+      },
+      {
+        "id": "lambda1",
+        "type": "component",
+        "label": "Auth Lambda",
+        "data": {
+          "technology": "Node.js"
+        }
+      },
+      {
+        "id": "lambda2",
+        "type": "component",
+        "label": "Data Lambda",
+        "data": {
+          "technology": "Python"
+        }
+      },
+      {
+        "id": "lambda3",
+        "type": "component",
+        "label": "Process Lambda",
+        "data": {
+          "technology": "Go"
+        }
+      },
+      {
+        "id": "dynamodb",
+        "type": "component",
+        "label": "DynamoDB",
+        "data": {
+          "technology": "NoSQL"
+        }
+      },
+      {
+        "id": "s3",
+        "type": "component",
+        "label": "S3 Bucket",
+        "data": {
+          "technology": "Storage"
+        }
+      },
+      {
+        "id": "sqs",
+        "type": "component",
+        "label": "SQS Queue",
+        "data": {
+          "technology": "Message Queue"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "api",
+        "target": "lambda1",
+        "label": "Trigger",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "api",
+        "target": "lambda2",
+        "label": "Trigger",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "lambda2",
+        "target": "dynamodb",
+        "label": "Query",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "lambda2",
+        "target": "s3",
+        "label": "Store",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "lambda2",
+        "target": "sqs",
+        "label": "Enqueue",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "sqs",
+        "target": "lambda3",
+        "label": "Trigger",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

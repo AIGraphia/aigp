@@ -1,0 +1,153 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "CI/CD Pipeline",
+    "description": "Automated build, test, and deployment workflow",
+    "author": "AIGP Examples",
+    "tags": [
+      "flowchart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "commit",
+        "type": "start",
+        "label": "Git Commit",
+        "data": {}
+      },
+      {
+        "id": "build",
+        "type": "process",
+        "label": "Build",
+        "data": {}
+      },
+      {
+        "id": "test",
+        "type": "process",
+        "label": "Run Tests",
+        "data": {}
+      },
+      {
+        "id": "test_pass",
+        "type": "decision",
+        "label": "Tests Pass?",
+        "data": {}
+      },
+      {
+        "id": "deploy_staging",
+        "type": "process",
+        "label": "Deploy to Staging",
+        "data": {}
+      },
+      {
+        "id": "manual_approval",
+        "type": "decision",
+        "label": "Approve?",
+        "data": {}
+      },
+      {
+        "id": "deploy_prod",
+        "type": "process",
+        "label": "Deploy to Production",
+        "data": {}
+      },
+      {
+        "id": "notify",
+        "type": "process",
+        "label": "Notify Team",
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "label": "Complete",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "commit",
+        "target": "build",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "build",
+        "target": "test",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "test",
+        "target": "test_pass",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "test_pass",
+        "target": "deploy_staging",
+        "label": "Pass",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "test_pass",
+        "target": "notify",
+        "label": "Fail",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "deploy_staging",
+        "target": "manual_approval",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "manual_approval",
+        "target": "deploy_prod",
+        "label": "Approved",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "manual_approval",
+        "target": "notify",
+        "label": "Rejected",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "flow",
+        "source": "deploy_prod",
+        "target": "notify",
+        "data": {}
+      },
+      {
+        "id": "e9",
+        "type": "flow",
+        "source": "notify",
+        "target": "end",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

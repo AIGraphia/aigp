@@ -1,0 +1,140 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "bpmn",
+  "metadata": {
+    "title": "Loan Approval Process",
+    "description": "Bank loan application BPMN workflow",
+    "author": "AIGP Examples",
+    "tags": [
+      "bpmn",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "label": "Application Received",
+        "data": {}
+      },
+      {
+        "id": "check_credit",
+        "type": "task",
+        "label": "Check Credit Score",
+        "data": {}
+      },
+      {
+        "id": "credit_ok",
+        "type": "gateway",
+        "label": "Credit OK?",
+        "data": {}
+      },
+      {
+        "id": "review",
+        "type": "task",
+        "label": "Manual Review",
+        "data": {}
+      },
+      {
+        "id": "approve",
+        "type": "task",
+        "label": "Approve Loan",
+        "data": {}
+      },
+      {
+        "id": "reject",
+        "type": "task",
+        "label": "Reject Application",
+        "data": {}
+      },
+      {
+        "id": "notify",
+        "type": "task",
+        "label": "Notify Applicant",
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "label": "Process Complete",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "sequence",
+        "source": "start",
+        "target": "check_credit",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "sequence",
+        "source": "check_credit",
+        "target": "credit_ok",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "sequence",
+        "source": "credit_ok",
+        "target": "review",
+        "label": "Good",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "sequence",
+        "source": "credit_ok",
+        "target": "reject",
+        "label": "Poor",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "sequence",
+        "source": "review",
+        "target": "approve",
+        "label": "Approved",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "sequence",
+        "source": "review",
+        "target": "reject",
+        "label": "Rejected",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "sequence",
+        "source": "approve",
+        "target": "notify",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "sequence",
+        "source": "reject",
+        "target": "notify",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "sequence",
+        "source": "notify",
+        "target": "end",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

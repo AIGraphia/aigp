@@ -1,0 +1,113 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "architecture",
+  "metadata": {
+    "title": "Event-Driven Architecture",
+    "description": "Event streaming microservices architecture",
+    "author": "AIGP Examples",
+    "tags": [
+      "architecture",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "producer1",
+        "type": "component",
+        "label": "Order Service",
+        "data": {
+          "technology": "Java"
+        }
+      },
+      {
+        "id": "producer2",
+        "type": "component",
+        "label": "Payment Service",
+        "data": {
+          "technology": "Go"
+        }
+      },
+      {
+        "id": "kafka",
+        "type": "component",
+        "label": "Kafka Cluster",
+        "data": {
+          "technology": "Event Streaming"
+        }
+      },
+      {
+        "id": "consumer1",
+        "type": "component",
+        "label": "Email Service",
+        "data": {
+          "technology": "Python"
+        }
+      },
+      {
+        "id": "consumer2",
+        "type": "component",
+        "label": "Analytics Service",
+        "data": {
+          "technology": "Spark"
+        }
+      },
+      {
+        "id": "consumer3",
+        "type": "component",
+        "label": "Notification Service",
+        "data": {
+          "technology": "Node.js"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "producer1",
+        "target": "kafka",
+        "label": "OrderCreated Event",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "producer2",
+        "target": "kafka",
+        "label": "PaymentProcessed Event",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "kafka",
+        "target": "consumer1",
+        "label": "Subscribe",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "kafka",
+        "target": "consumer2",
+        "label": "Subscribe",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "kafka",
+        "target": "consumer3",
+        "label": "Subscribe",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

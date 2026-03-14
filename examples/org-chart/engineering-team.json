@@ -1,0 +1,138 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "org-chart",
+  "metadata": {
+    "title": "Engineering Team Structure",
+    "description": "Software engineering organization",
+    "author": "AIGP Examples",
+    "tags": [
+      "org-chart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "vp",
+        "type": "position",
+        "label": "VP Engineering",
+        "data": {
+          "name": "Alex Chen"
+        }
+      },
+      {
+        "id": "backend",
+        "type": "position",
+        "label": "Backend Lead",
+        "data": {
+          "name": "Bailey Rodriguez"
+        }
+      },
+      {
+        "id": "frontend",
+        "type": "position",
+        "label": "Frontend Lead",
+        "data": {
+          "name": "Casey Martinez"
+        }
+      },
+      {
+        "id": "devops",
+        "type": "position",
+        "label": "DevOps Lead",
+        "data": {
+          "name": "Dakota Kim"
+        }
+      },
+      {
+        "id": "be_dev1",
+        "type": "position",
+        "label": "Senior Backend Dev",
+        "data": {
+          "name": "Ellis Taylor"
+        }
+      },
+      {
+        "id": "be_dev2",
+        "type": "position",
+        "label": "Backend Dev",
+        "data": {
+          "name": "Finley Anderson"
+        }
+      },
+      {
+        "id": "fe_dev1",
+        "type": "position",
+        "label": "Senior Frontend Dev",
+        "data": {
+          "name": "Gray Wilson"
+        }
+      },
+      {
+        "id": "sre",
+        "type": "position",
+        "label": "SRE Engineer",
+        "data": {
+          "name": "Harper Moore"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "reports-to",
+        "source": "vp",
+        "target": "backend",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "reports-to",
+        "source": "vp",
+        "target": "frontend",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "reports-to",
+        "source": "vp",
+        "target": "devops",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "reports-to",
+        "source": "backend",
+        "target": "be_dev1",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "reports-to",
+        "source": "backend",
+        "target": "be_dev2",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "reports-to",
+        "source": "frontend",
+        "target": "fe_dev1",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "reports-to",
+        "source": "devops",
+        "target": "sre",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

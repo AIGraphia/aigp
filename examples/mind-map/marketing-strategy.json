@@ -1,0 +1,148 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "mind-map",
+  "metadata": {
+    "title": "Marketing Strategy Map",
+    "description": "Digital marketing channels and tactics",
+    "author": "AIGP Examples",
+    "tags": [
+      "mind-map",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "marketing",
+        "type": "root",
+        "label": "Marketing Strategy",
+        "data": {}
+      },
+      {
+        "id": "content",
+        "type": "branch",
+        "label": "Content Marketing",
+        "data": {}
+      },
+      {
+        "id": "social",
+        "type": "branch",
+        "label": "Social Media",
+        "data": {}
+      },
+      {
+        "id": "paid",
+        "type": "branch",
+        "label": "Paid Advertising",
+        "data": {}
+      },
+      {
+        "id": "blog",
+        "type": "leaf",
+        "label": "Blog Posts",
+        "data": {}
+      },
+      {
+        "id": "video",
+        "type": "leaf",
+        "label": "Video Content",
+        "data": {}
+      },
+      {
+        "id": "twitter",
+        "type": "leaf",
+        "label": "Twitter",
+        "data": {}
+      },
+      {
+        "id": "linkedin",
+        "type": "leaf",
+        "label": "LinkedIn",
+        "data": {}
+      },
+      {
+        "id": "google",
+        "type": "leaf",
+        "label": "Google Ads",
+        "data": {}
+      },
+      {
+        "id": "facebook",
+        "type": "leaf",
+        "label": "Facebook Ads",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "hierarchy",
+        "source": "marketing",
+        "target": "content",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "hierarchy",
+        "source": "marketing",
+        "target": "social",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "hierarchy",
+        "source": "marketing",
+        "target": "paid",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "hierarchy",
+        "source": "content",
+        "target": "blog",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "hierarchy",
+        "source": "content",
+        "target": "video",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "hierarchy",
+        "source": "social",
+        "target": "twitter",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "hierarchy",
+        "source": "social",
+        "target": "linkedin",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "hierarchy",
+        "source": "paid",
+        "target": "google",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "hierarchy",
+        "source": "paid",
+        "target": "facebook",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

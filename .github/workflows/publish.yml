@@ -1,0 +1,116 @@
+# Publish AIGP packages to npm
+# Triggered manually or on version tags
+
+name: Publish to npm
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version to publish (e.g., 1.0.0)'
+        required: true
+        type: string
+      tag:
+        description: 'npm tag (latest, beta, next)'
+        required: true
+        default: 'latest'
+        type: choice
+        options:
+          - latest
+          - beta
+          - next
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  publish:
+    name: Publish Packages
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write # Required for npm provenance
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20.x
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Build all packages
+        run: pnpm run build
+
+      - name: Run tests
+        run: pnpm test
+
+      - name: Run integration tests
+        run: node test-integration.js
+
+      - name: Publish @aigp/protocol
+        working-directory: packages/protocol
+        run: pnpm publish --access public --no-git-checks --provenance --tag ${{ inputs.tag || 'latest' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @aigp/plugins
+        working-directory: packages/plugins
+        run: pnpm publish --access public --no-git-checks --provenance --tag ${{ inputs.tag || 'latest' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @aigp/layout
+        working-directory: packages/layout
+        run: pnpm publish --access public --no-git-checks --provenance --tag ${{ inputs.tag || 'latest' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @aigp/export
+        working-directory: packages/export
+        run: pnpm publish --access public --no-git-checks --provenance --tag ${{ inputs.tag || 'latest' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @aigp/converters
+        working-directory: packages/converters
+        run: pnpm publish --access public --no-git-checks --provenance --tag ${{ inputs.tag || 'latest' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Publish @aigp/cli
+        working-directory: packages/cli
+        run: pnpm publish --access public --no-git-checks --provenance --tag ${{ inputs.tag || 'latest' }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Create GitHub Release
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Release ${{ github.ref_name }}
+          body: |
+            ## AIGP ${{ github.ref_name }}
+
+            Published all @aigp/* packages to npm.
+
+            ### Installation
+            ```bash
+            pnpm add @aigp/protocol @aigp/cli
+            ```
+
+            See [CHANGELOG.md](./CHANGELOG.md) for details.
+          draft: false
+          prerelease: false

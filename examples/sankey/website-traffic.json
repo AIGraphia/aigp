@@ -1,0 +1,151 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "sankey",
+  "metadata": {
+    "title": "Website Traffic Sources",
+    "description": "Traffic source flow analysis",
+    "author": "AIGP Examples",
+    "tags": [
+      "sankey",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "organic",
+        "type": "source",
+        "label": "Organic Search",
+        "data": {}
+      },
+      {
+        "id": "direct",
+        "type": "source",
+        "label": "Direct",
+        "data": {}
+      },
+      {
+        "id": "social",
+        "type": "source",
+        "label": "Social Media",
+        "data": {}
+      },
+      {
+        "id": "homepage",
+        "type": "process",
+        "label": "Homepage",
+        "data": {}
+      },
+      {
+        "id": "product",
+        "type": "process",
+        "label": "Product Pages",
+        "data": {}
+      },
+      {
+        "id": "blog",
+        "type": "process",
+        "label": "Blog",
+        "data": {}
+      },
+      {
+        "id": "signup",
+        "type": "sink",
+        "label": "Sign Up",
+        "data": {}
+      },
+      {
+        "id": "purchase",
+        "type": "sink",
+        "label": "Purchase",
+        "data": {}
+      },
+      {
+        "id": "bounce",
+        "type": "sink",
+        "label": "Bounce",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "organic",
+        "target": "homepage",
+        "data": {
+          "value": 30
+        }
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "organic",
+        "target": "blog",
+        "data": {
+          "value": 40
+        }
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "direct",
+        "target": "homepage",
+        "data": {
+          "value": 50
+        }
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "social",
+        "target": "product",
+        "data": {
+          "value": 20
+        }
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "homepage",
+        "target": "signup",
+        "data": {
+          "value": 30
+        }
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "homepage",
+        "target": "bounce",
+        "data": {
+          "value": 50
+        }
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "product",
+        "target": "purchase",
+        "data": {
+          "value": 15
+        }
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "blog",
+        "target": "signup",
+        "data": {
+          "value": 10
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

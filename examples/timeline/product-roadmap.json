@@ -1,0 +1,78 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "timeline",
+  "metadata": {
+    "title": "Product Roadmap 2026",
+    "description": "Annual product development timeline",
+    "author": "AIGP Examples",
+    "tags": [
+      "timeline",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "q1",
+        "type": "event",
+        "label": "Q1: Core Features",
+        "data": {
+          "date": "2026-01-01"
+        }
+      },
+      {
+        "id": "q2",
+        "type": "event",
+        "label": "Q2: Mobile App",
+        "data": {
+          "date": "2026-04-01"
+        }
+      },
+      {
+        "id": "q3",
+        "type": "event",
+        "label": "Q3: API Platform",
+        "data": {
+          "date": "2026-07-01"
+        }
+      },
+      {
+        "id": "q4",
+        "type": "event",
+        "label": "Q4: Enterprise Features",
+        "data": {
+          "date": "2026-10-01"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "q1",
+        "target": "q2",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "q2",
+        "target": "q3",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "q3",
+        "target": "q4",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

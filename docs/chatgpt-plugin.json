@@ -1,0 +1,18 @@
+{
+  "schema_version": "v1",
+  "name_for_human": "AIGP Diagram Creator",
+  "name_for_model": "aigp",
+  "description_for_human": "Create professional diagrams from natural language. Supports flowcharts, sequence diagrams, ER diagrams, and 20+ more types.",
+  "description_for_model": "AIGP (AI Graphic Protocol) is a universal JSON standard for creating diagrams from natural language. Use this plugin to create, validate, convert, and enhance diagrams. The plugin supports 20+ diagram types including flowcharts, sequence diagrams, class diagrams, ER diagrams, state machines, network diagrams, mind maps, timelines, and more. Users can describe what they want in plain English and get back professional diagrams. The plugin can also convert between formats (Mermaid, PlantUML, DOT) and enhance existing diagrams.",
+  "auth": {
+    "type": "user_http",
+    "authorization_type": "bearer"
+  },
+  "api": {
+    "type": "openapi",
+    "url": "https://api.aigp.dev/openapi.json"
+  },
+  "logo_url": "https://aigp.dev/logo.png",
+  "contact_email": "support@aigp.dev",
+  "legal_info_url": "https://aigp.dev/legal"
+}

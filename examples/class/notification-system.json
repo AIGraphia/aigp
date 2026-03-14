@@ -1,0 +1,128 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "class",
+  "metadata": {
+    "title": "Notification System Architecture",
+    "description": "Multi-channel notification delivery",
+    "author": "AIGP Examples",
+    "tags": [
+      "class",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "Notification",
+        "type": "class",
+        "label": "Notification",
+        "data": {
+          "attributes": [
+            "id: string",
+            "message: string",
+            "priority: number"
+          ],
+          "methods": [
+            "send()"
+          ]
+        }
+      },
+      {
+        "id": "EmailNotification",
+        "type": "class",
+        "label": "EmailNotification",
+        "data": {
+          "attributes": [
+            "subject: string",
+            "body: string"
+          ],
+          "methods": [
+            "sendEmail()"
+          ]
+        }
+      },
+      {
+        "id": "SMSNotification",
+        "type": "class",
+        "label": "SMSNotification",
+        "data": {
+          "attributes": [
+            "phoneNumber: string"
+          ],
+          "methods": [
+            "sendSMS()"
+          ]
+        }
+      },
+      {
+        "id": "PushNotification",
+        "type": "class",
+        "label": "PushNotification",
+        "data": {
+          "attributes": [
+            "deviceToken: string"
+          ],
+          "methods": [
+            "sendPush()"
+          ]
+        }
+      },
+      {
+        "id": "NotificationQueue",
+        "type": "class",
+        "label": "NotificationQueue",
+        "data": {
+          "attributes": [
+            "queue: Notification[]"
+          ],
+          "methods": [
+            "enqueue()",
+            "process()"
+          ]
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "inheritance",
+        "source": "EmailNotification",
+        "target": "Notification",
+        "label": "extends",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "inheritance",
+        "source": "SMSNotification",
+        "target": "Notification",
+        "label": "extends",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "inheritance",
+        "source": "PushNotification",
+        "target": "Notification",
+        "label": "extends",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "aggregation",
+        "source": "NotificationQueue",
+        "target": "Notification",
+        "label": "manages",
+        "data": {
+          "cardinality": "*"
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "User Login Flow",
+    "description": "Simple user authentication flowchart",
+    "author": "aigraphia",
+    "created": "2026-03-09T00:00:00Z"
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "label": "Start",
+        "data": {}
+      },
+      {
+        "id": "input",
+        "type": "input",
+        "label": "Enter Credentials",
+        "data": {
+          "description": "User enters username and password"
+        }
+      },
+      {
+        "id": "validate",
+        "type": "process",
+        "label": "Validate Credentials",
+        "data": {}
+      },
+      {
+        "id": "decision",
+        "type": "decision",
+        "label": "Valid?",
+        "data": {}
+      },
+      {
+        "id": "success",
+        "type": "process",
+        "label": "Grant Access",
+        "data": {}
+      },
+      {
+        "id": "error",
+        "type": "process",
+        "label": "Show Error",
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "start",
+        "label": "End",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "start",
+        "target": "input",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "input",
+        "target": "validate",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "validate",
+        "target": "decision",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "conditional",
+        "source": "decision",
+        "target": "success",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "conditional",
+        "source": "decision",
+        "target": "error",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "success",
+        "target": "end",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "error",
+        "target": "input",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

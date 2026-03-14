@@ -1,0 +1,56 @@
+{
+  "name": "@aigp/export",
+  "version": "1.0.0",
+  "description": "SVG and PNG export for AIGP diagrams",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest",
+    "lint": "eslint src/",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@aigp/layout": "workspace:*",
+    "@aigp/protocol": "workspace:*",
+    "jsdom": "^28.1.0",
+    "sharp": "^0.34.5"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
+  },
+  "keywords": [
+    "aigp",
+    "diagram",
+    "export",
+    "svg",
+    "png",
+    "visualization"
+  ],
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aigp/aigp.git",
+    "directory": "packages/export"
+  },
+  "bugs": {
+    "url": "https://github.com/aigp/aigp/issues"
+  },
+  "homepage": "https://github.com/aigp/aigp/tree/main/packages/export#readme",
+  "author": "AIGP Contributors",
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,153 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "Content Moderation Workflow",
+    "description": "User-generated content review process",
+    "author": "AIGP Examples",
+    "tags": [
+      "flowchart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "submit",
+        "type": "start",
+        "label": "Submit Content",
+        "data": {}
+      },
+      {
+        "id": "auto_check",
+        "type": "process",
+        "label": "Auto-Moderation",
+        "data": {}
+      },
+      {
+        "id": "flagged",
+        "type": "decision",
+        "label": "Flagged?",
+        "data": {}
+      },
+      {
+        "id": "human_review",
+        "type": "process",
+        "label": "Human Review",
+        "data": {}
+      },
+      {
+        "id": "verdict",
+        "type": "decision",
+        "label": "Approved?",
+        "data": {}
+      },
+      {
+        "id": "publish",
+        "type": "process",
+        "label": "Publish",
+        "data": {}
+      },
+      {
+        "id": "remove",
+        "type": "process",
+        "label": "Remove Content",
+        "data": {}
+      },
+      {
+        "id": "notify_user",
+        "type": "process",
+        "label": "Notify User",
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "label": "Complete",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "submit",
+        "target": "auto_check",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "auto_check",
+        "target": "flagged",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "flagged",
+        "target": "human_review",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "flagged",
+        "target": "publish",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "human_review",
+        "target": "verdict",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "verdict",
+        "target": "publish",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "verdict",
+        "target": "remove",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "publish",
+        "target": "end",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "flow",
+        "source": "remove",
+        "target": "notify_user",
+        "data": {}
+      },
+      {
+        "id": "e9",
+        "type": "flow",
+        "source": "notify_user",
+        "target": "end",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

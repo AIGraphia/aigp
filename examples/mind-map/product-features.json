@@ -1,0 +1,148 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "mind-map",
+  "metadata": {
+    "title": "Product Feature Brainstorm",
+    "description": "Feature ideation mind map",
+    "author": "AIGP Examples",
+    "tags": [
+      "mind-map",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "product",
+        "type": "root",
+        "label": "Product Features",
+        "data": {}
+      },
+      {
+        "id": "core",
+        "type": "branch",
+        "label": "Core Features",
+        "data": {}
+      },
+      {
+        "id": "social",
+        "type": "branch",
+        "label": "Social Features",
+        "data": {}
+      },
+      {
+        "id": "analytics",
+        "type": "branch",
+        "label": "Analytics",
+        "data": {}
+      },
+      {
+        "id": "auth",
+        "type": "leaf",
+        "label": "Authentication",
+        "data": {}
+      },
+      {
+        "id": "dashboard",
+        "type": "leaf",
+        "label": "Dashboard",
+        "data": {}
+      },
+      {
+        "id": "sharing",
+        "type": "leaf",
+        "label": "Sharing",
+        "data": {}
+      },
+      {
+        "id": "comments",
+        "type": "leaf",
+        "label": "Comments",
+        "data": {}
+      },
+      {
+        "id": "reports",
+        "type": "leaf",
+        "label": "Reports",
+        "data": {}
+      },
+      {
+        "id": "metrics",
+        "type": "leaf",
+        "label": "Metrics",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "hierarchy",
+        "source": "product",
+        "target": "core",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "hierarchy",
+        "source": "product",
+        "target": "social",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "hierarchy",
+        "source": "product",
+        "target": "analytics",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "hierarchy",
+        "source": "core",
+        "target": "auth",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "hierarchy",
+        "source": "core",
+        "target": "dashboard",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "hierarchy",
+        "source": "social",
+        "target": "sharing",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "hierarchy",
+        "source": "social",
+        "target": "comments",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "hierarchy",
+        "source": "analytics",
+        "target": "reports",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "hierarchy",
+        "source": "analytics",
+        "target": "metrics",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

@@ -1,0 +1,133 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "class",
+  "metadata": {
+    "title": "Blog System Architecture",
+    "description": "Content management system class structure",
+    "author": "AIGP Examples",
+    "tags": [
+      "class",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "Post",
+        "type": "class",
+        "label": "Post",
+        "data": {
+          "attributes": [
+            "title: string",
+            "content: string",
+            "published: Date"
+          ],
+          "methods": [
+            "publish()",
+            "unpublish()"
+          ]
+        }
+      },
+      {
+        "id": "Author",
+        "type": "class",
+        "label": "Author",
+        "data": {
+          "attributes": [
+            "name: string",
+            "bio: string"
+          ],
+          "methods": [
+            "createPost()"
+          ]
+        }
+      },
+      {
+        "id": "Comment",
+        "type": "class",
+        "label": "Comment",
+        "data": {
+          "attributes": [
+            "text: string",
+            "createdAt: Date"
+          ],
+          "methods": [
+            "edit()",
+            "delete()"
+          ]
+        }
+      },
+      {
+        "id": "Tag",
+        "type": "class",
+        "label": "Tag",
+        "data": {
+          "attributes": [
+            "name: string"
+          ],
+          "methods": []
+        }
+      },
+      {
+        "id": "Category",
+        "type": "class",
+        "label": "Category",
+        "data": {
+          "attributes": [
+            "name: string",
+            "slug: string"
+          ],
+          "methods": []
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "association",
+        "source": "Author",
+        "target": "Post",
+        "label": "writes",
+        "data": {
+          "cardinality": "1..*"
+        }
+      },
+      {
+        "id": "e1",
+        "type": "composition",
+        "source": "Post",
+        "target": "Comment",
+        "label": "has",
+        "data": {
+          "cardinality": "0..*"
+        }
+      },
+      {
+        "id": "e2",
+        "type": "association",
+        "source": "Post",
+        "target": "Tag",
+        "label": "tagged with",
+        "data": {
+          "cardinality": "*"
+        }
+      },
+      {
+        "id": "e3",
+        "type": "association",
+        "source": "Post",
+        "target": "Category",
+        "label": "belongs to",
+        "data": {
+          "cardinality": "1"
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

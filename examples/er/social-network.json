@@ -1,0 +1,148 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "er",
+  "metadata": {
+    "title": "Social Network Database",
+    "description": "Database schema for social media platform",
+    "author": "AIGP Examples",
+    "tags": [
+      "er",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "users",
+        "type": "entity",
+        "label": "Users",
+        "data": {
+          "attributes": [
+            "user_id (PK)",
+            "username",
+            "email",
+            "created_at"
+          ]
+        }
+      },
+      {
+        "id": "posts",
+        "type": "entity",
+        "label": "Posts",
+        "data": {
+          "attributes": [
+            "post_id (PK)",
+            "user_id (FK)",
+            "content",
+            "created_at"
+          ]
+        }
+      },
+      {
+        "id": "comments",
+        "type": "entity",
+        "label": "Comments",
+        "data": {
+          "attributes": [
+            "comment_id (PK)",
+            "post_id (FK)",
+            "user_id (FK)",
+            "text"
+          ]
+        }
+      },
+      {
+        "id": "likes",
+        "type": "entity",
+        "label": "Likes",
+        "data": {
+          "attributes": [
+            "like_id (PK)",
+            "user_id (FK)",
+            "post_id (FK)"
+          ]
+        }
+      },
+      {
+        "id": "follows",
+        "type": "entity",
+        "label": "Follows",
+        "data": {
+          "attributes": [
+            "follower_id (FK)",
+            "following_id (FK)",
+            "created_at"
+          ]
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "relationship",
+        "source": "users",
+        "target": "posts",
+        "label": "creates",
+        "data": {
+          "cardinality": "1:N"
+        }
+      },
+      {
+        "id": "e1",
+        "type": "relationship",
+        "source": "users",
+        "target": "comments",
+        "label": "writes",
+        "data": {
+          "cardinality": "1:N"
+        }
+      },
+      {
+        "id": "e2",
+        "type": "relationship",
+        "source": "posts",
+        "target": "comments",
+        "label": "has",
+        "data": {
+          "cardinality": "1:N"
+        }
+      },
+      {
+        "id": "e3",
+        "type": "relationship",
+        "source": "users",
+        "target": "likes",
+        "label": "gives",
+        "data": {
+          "cardinality": "1:N"
+        }
+      },
+      {
+        "id": "e4",
+        "type": "relationship",
+        "source": "posts",
+        "target": "likes",
+        "label": "receives",
+        "data": {
+          "cardinality": "1:N"
+        }
+      },
+      {
+        "id": "e5",
+        "type": "relationship",
+        "source": "users",
+        "target": "follows",
+        "label": "follows",
+        "data": {
+          "cardinality": "M:N"
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

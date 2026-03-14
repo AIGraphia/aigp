@@ -1,0 +1,119 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "state-machine",
+  "metadata": {
+    "title": "User Session State Machine",
+    "description": "Web application session lifecycle",
+    "author": "AIGP Examples",
+    "tags": [
+      "state-machine",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "logged_out",
+        "type": "state",
+        "label": "Logged Out",
+        "data": {}
+      },
+      {
+        "id": "authenticating",
+        "type": "state",
+        "label": "Authenticating",
+        "data": {}
+      },
+      {
+        "id": "active",
+        "type": "state",
+        "label": "Active Session",
+        "data": {}
+      },
+      {
+        "id": "idle",
+        "type": "state",
+        "label": "Idle",
+        "data": {}
+      },
+      {
+        "id": "expired",
+        "type": "state",
+        "label": "Expired",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "transition",
+        "source": "logged_out",
+        "target": "authenticating",
+        "label": "login attempt",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "transition",
+        "source": "authenticating",
+        "target": "active",
+        "label": "credentials valid",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "transition",
+        "source": "authenticating",
+        "target": "logged_out",
+        "label": "credentials invalid",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "transition",
+        "source": "active",
+        "target": "idle",
+        "label": "inactivity timeout",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "transition",
+        "source": "idle",
+        "target": "active",
+        "label": "user activity",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "transition",
+        "source": "idle",
+        "target": "expired",
+        "label": "session timeout",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "transition",
+        "source": "active",
+        "target": "logged_out",
+        "label": "logout",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "transition",
+        "source": "expired",
+        "target": "logged_out",
+        "label": "cleanup",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

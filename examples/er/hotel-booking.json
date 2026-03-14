@@ -1,0 +1,108 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "er",
+  "metadata": {
+    "title": "Hotel Booking System",
+    "description": "Hotel reservation database design",
+    "author": "AIGP Examples",
+    "tags": [
+      "er",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "guests",
+        "type": "entity",
+        "label": "Guests",
+        "data": {
+          "attributes": [
+            "guest_id (PK)",
+            "name",
+            "email",
+            "phone"
+          ]
+        }
+      },
+      {
+        "id": "rooms",
+        "type": "entity",
+        "label": "Rooms",
+        "data": {
+          "attributes": [
+            "room_id (PK)",
+            "room_number",
+            "type",
+            "rate"
+          ]
+        }
+      },
+      {
+        "id": "bookings",
+        "type": "entity",
+        "label": "Bookings",
+        "data": {
+          "attributes": [
+            "booking_id (PK)",
+            "guest_id (FK)",
+            "room_id (FK)",
+            "check_in",
+            "check_out"
+          ]
+        }
+      },
+      {
+        "id": "payments",
+        "type": "entity",
+        "label": "Payments",
+        "data": {
+          "attributes": [
+            "payment_id (PK)",
+            "booking_id (FK)",
+            "amount",
+            "date"
+          ]
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "relationship",
+        "source": "guests",
+        "target": "bookings",
+        "label": "makes",
+        "data": {
+          "cardinality": "1:N"
+        }
+      },
+      {
+        "id": "e1",
+        "type": "relationship",
+        "source": "rooms",
+        "target": "bookings",
+        "label": "booked in",
+        "data": {
+          "cardinality": "1:N"
+        }
+      },
+      {
+        "id": "e2",
+        "type": "relationship",
+        "source": "bookings",
+        "target": "payments",
+        "label": "paid by",
+        "data": {
+          "cardinality": "1:N"
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

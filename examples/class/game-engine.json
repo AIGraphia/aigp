@@ -1,0 +1,134 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "class",
+  "metadata": {
+    "title": "Simple Game Engine",
+    "description": "Basic 2D game engine class hierarchy",
+    "author": "AIGP Examples",
+    "tags": [
+      "class",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "GameObject",
+        "type": "class",
+        "label": "GameObject",
+        "data": {
+          "attributes": [
+            "position: Vector2",
+            "rotation: number"
+          ],
+          "methods": [
+            "update()",
+            "render()"
+          ]
+        }
+      },
+      {
+        "id": "Player",
+        "type": "class",
+        "label": "Player",
+        "data": {
+          "attributes": [
+            "health: number",
+            "score: number"
+          ],
+          "methods": [
+            "move()",
+            "attack()"
+          ]
+        }
+      },
+      {
+        "id": "Enemy",
+        "type": "class",
+        "label": "Enemy",
+        "data": {
+          "attributes": [
+            "health: number",
+            "damage: number"
+          ],
+          "methods": [
+            "patrol()",
+            "attack()"
+          ]
+        }
+      },
+      {
+        "id": "Weapon",
+        "type": "class",
+        "label": "Weapon",
+        "data": {
+          "attributes": [
+            "damage: number",
+            "range: number"
+          ],
+          "methods": [
+            "fire()"
+          ]
+        }
+      },
+      {
+        "id": "Scene",
+        "type": "class",
+        "label": "Scene",
+        "data": {
+          "attributes": [
+            "objects: GameObject[]"
+          ],
+          "methods": [
+            "add()",
+            "remove()"
+          ]
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "inheritance",
+        "source": "Player",
+        "target": "GameObject",
+        "label": "extends",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "inheritance",
+        "source": "Enemy",
+        "target": "GameObject",
+        "label": "extends",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "composition",
+        "source": "Player",
+        "target": "Weapon",
+        "label": "equipped with",
+        "data": {
+          "cardinality": "1"
+        }
+      },
+      {
+        "id": "e3",
+        "type": "aggregation",
+        "source": "Scene",
+        "target": "GameObject",
+        "label": "contains",
+        "data": {
+          "cardinality": "*"
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "Bug Triage Workflow",
+    "description": "Software bug reporting and prioritization",
+    "author": "AIGP Examples",
+    "tags": [
+      "flowchart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "report",
+        "type": "start",
+        "label": "Bug Report",
+        "data": {}
+      },
+      {
+        "id": "reproduce",
+        "type": "process",
+        "label": "Reproduce Bug",
+        "data": {}
+      },
+      {
+        "id": "reproducible",
+        "type": "decision",
+        "label": "Reproducible?",
+        "data": {}
+      },
+      {
+        "id": "severity",
+        "type": "decision",
+        "label": "Severity?",
+        "data": {}
+      },
+      {
+        "id": "critical",
+        "type": "process",
+        "label": "Critical Priority",
+        "data": {}
+      },
+      {
+        "id": "high",
+        "type": "process",
+        "label": "High Priority",
+        "data": {}
+      },
+      {
+        "id": "medium",
+        "type": "process",
+        "label": "Medium Priority",
+        "data": {}
+      },
+      {
+        "id": "assign",
+        "type": "process",
+        "label": "Assign Developer",
+        "data": {}
+      },
+      {
+        "id": "close",
+        "type": "process",
+        "label": "Close as Invalid",
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "label": "Done",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "report",
+        "target": "reproduce",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "reproduce",
+        "target": "reproducible",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "reproducible",
+        "target": "severity",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "reproducible",
+        "target": "close",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "severity",
+        "target": "critical",
+        "label": "Critical",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "severity",
+        "target": "high",
+        "label": "High",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "severity",
+        "target": "medium",
+        "label": "Medium",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "critical",
+        "target": "assign",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "flow",
+        "source": "high",
+        "target": "assign",
+        "data": {}
+      },
+      {
+        "id": "e9",
+        "type": "flow",
+        "source": "medium",
+        "target": "assign",
+        "data": {}
+      },
+      {
+        "id": "e10",
+        "type": "flow",
+        "source": "assign",
+        "target": "end",
+        "data": {}
+      },
+      {
+        "id": "e11",
+        "type": "flow",
+        "source": "close",
+        "target": "end",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

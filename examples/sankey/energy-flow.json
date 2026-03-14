@@ -1,0 +1,121 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "sankey",
+  "metadata": {
+    "title": "Energy Flow Diagram",
+    "description": "Energy distribution and consumption flow",
+    "author": "AIGP Examples",
+    "tags": [
+      "sankey",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "coal",
+        "type": "source",
+        "label": "Coal",
+        "data": {}
+      },
+      {
+        "id": "gas",
+        "type": "source",
+        "label": "Natural Gas",
+        "data": {}
+      },
+      {
+        "id": "renewable",
+        "type": "source",
+        "label": "Renewable",
+        "data": {}
+      },
+      {
+        "id": "electricity",
+        "type": "process",
+        "label": "Electricity",
+        "data": {}
+      },
+      {
+        "id": "residential",
+        "type": "sink",
+        "label": "Residential",
+        "data": {}
+      },
+      {
+        "id": "commercial",
+        "type": "sink",
+        "label": "Commercial",
+        "data": {}
+      },
+      {
+        "id": "industrial",
+        "type": "sink",
+        "label": "Industrial",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "coal",
+        "target": "electricity",
+        "data": {
+          "value": 40
+        }
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "gas",
+        "target": "electricity",
+        "data": {
+          "value": 35
+        }
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "renewable",
+        "target": "electricity",
+        "data": {
+          "value": 25
+        }
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "electricity",
+        "target": "residential",
+        "data": {
+          "value": 35
+        }
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "electricity",
+        "target": "commercial",
+        "data": {
+          "value": 30
+        }
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "electricity",
+        "target": "industrial",
+        "data": {
+          "value": 35
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

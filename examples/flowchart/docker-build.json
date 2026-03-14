@@ -1,0 +1,179 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "Docker Build and Push Workflow",
+    "description": "Container image build pipeline",
+    "author": "AIGP Examples",
+    "tags": [
+      "flowchart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "label": "Git Push",
+        "data": {}
+      },
+      {
+        "id": "checkout",
+        "type": "process",
+        "label": "Checkout Code",
+        "data": {}
+      },
+      {
+        "id": "build",
+        "type": "process",
+        "label": "Docker Build",
+        "data": {}
+      },
+      {
+        "id": "test",
+        "type": "process",
+        "label": "Run Tests",
+        "data": {}
+      },
+      {
+        "id": "pass",
+        "type": "decision",
+        "label": "Tests Pass?",
+        "data": {}
+      },
+      {
+        "id": "scan",
+        "type": "process",
+        "label": "Security Scan",
+        "data": {}
+      },
+      {
+        "id": "vulnerabilities",
+        "type": "decision",
+        "label": "Safe?",
+        "data": {}
+      },
+      {
+        "id": "tag",
+        "type": "process",
+        "label": "Tag Image",
+        "data": {}
+      },
+      {
+        "id": "push",
+        "type": "process",
+        "label": "Push to Registry",
+        "data": {}
+      },
+      {
+        "id": "notify",
+        "type": "process",
+        "label": "Notify Team",
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "label": "Complete",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "start",
+        "target": "checkout",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "checkout",
+        "target": "build",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "build",
+        "target": "test",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "test",
+        "target": "pass",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "pass",
+        "target": "scan",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "pass",
+        "target": "notify",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "scan",
+        "target": "vulnerabilities",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "vulnerabilities",
+        "target": "tag",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "flow",
+        "source": "vulnerabilities",
+        "target": "notify",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e9",
+        "type": "flow",
+        "source": "tag",
+        "target": "push",
+        "data": {}
+      },
+      {
+        "id": "e10",
+        "type": "flow",
+        "source": "push",
+        "target": "notify",
+        "data": {}
+      },
+      {
+        "id": "e11",
+        "type": "flow",
+        "source": "notify",
+        "target": "end",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

@@ -1,0 +1,144 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "Security Incident Response",
+    "description": "Cybersecurity incident handling workflow",
+    "author": "AIGP Examples",
+    "tags": [
+      "flowchart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "alert",
+        "type": "start",
+        "label": "Security Alert",
+        "data": {}
+      },
+      {
+        "id": "triage",
+        "type": "process",
+        "label": "Triage",
+        "data": {}
+      },
+      {
+        "id": "severity",
+        "type": "decision",
+        "label": "Critical?",
+        "data": {}
+      },
+      {
+        "id": "escalate",
+        "type": "process",
+        "label": "Escalate",
+        "data": {}
+      },
+      {
+        "id": "investigate",
+        "type": "process",
+        "label": "Investigate",
+        "data": {}
+      },
+      {
+        "id": "contain",
+        "type": "process",
+        "label": "Contain Threat",
+        "data": {}
+      },
+      {
+        "id": "remediate",
+        "type": "process",
+        "label": "Remediate",
+        "data": {}
+      },
+      {
+        "id": "document",
+        "type": "process",
+        "label": "Document",
+        "data": {}
+      },
+      {
+        "id": "close",
+        "type": "end",
+        "label": "Close",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "alert",
+        "target": "triage",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "triage",
+        "target": "severity",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "severity",
+        "target": "escalate",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "severity",
+        "target": "investigate",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "escalate",
+        "target": "investigate",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "investigate",
+        "target": "contain",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "contain",
+        "target": "remediate",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "remediate",
+        "target": "document",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "flow",
+        "source": "document",
+        "target": "close",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

@@ -1,0 +1,157 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "Backup and Recovery Process",
+    "description": "Data backup and disaster recovery workflow",
+    "author": "AIGP Examples",
+    "tags": [
+      "flowchart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "schedule",
+        "type": "start",
+        "label": "Backup Schedule",
+        "data": {}
+      },
+      {
+        "id": "snapshot",
+        "type": "process",
+        "label": "Create Snapshot",
+        "data": {}
+      },
+      {
+        "id": "compress",
+        "type": "process",
+        "label": "Compress Data",
+        "data": {}
+      },
+      {
+        "id": "encrypt",
+        "type": "process",
+        "label": "Encrypt",
+        "data": {}
+      },
+      {
+        "id": "upload",
+        "type": "process",
+        "label": "Upload to Cloud",
+        "data": {}
+      },
+      {
+        "id": "verify",
+        "type": "decision",
+        "label": "Verified?",
+        "data": {}
+      },
+      {
+        "id": "complete",
+        "type": "process",
+        "label": "Log Success",
+        "data": {}
+      },
+      {
+        "id": "retry",
+        "type": "process",
+        "label": "Retry",
+        "data": {}
+      },
+      {
+        "id": "alert",
+        "type": "process",
+        "label": "Alert Team",
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "label": "End",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "schedule",
+        "target": "snapshot",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "snapshot",
+        "target": "compress",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "compress",
+        "target": "encrypt",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "encrypt",
+        "target": "upload",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "upload",
+        "target": "verify",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "verify",
+        "target": "complete",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "verify",
+        "target": "retry",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "retry",
+        "target": "snapshot",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "flow",
+        "source": "complete",
+        "target": "end",
+        "data": {}
+      },
+      {
+        "id": "e9",
+        "type": "flow",
+        "source": "alert",
+        "target": "end",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

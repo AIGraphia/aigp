@@ -1,0 +1,126 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "sequence",
+  "metadata": {
+    "title": "GraphQL Query Execution",
+    "description": "GraphQL request processing flow",
+    "author": "AIGP Examples",
+    "tags": [
+      "sequence",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "client",
+        "type": "actor",
+        "label": "Client",
+        "data": {}
+      },
+      {
+        "id": "gateway",
+        "type": "actor",
+        "label": "GraphQL Gateway",
+        "data": {}
+      },
+      {
+        "id": "resolver",
+        "type": "actor",
+        "label": "Resolver",
+        "data": {}
+      },
+      {
+        "id": "datasource",
+        "type": "actor",
+        "label": "Data Source",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "message",
+        "source": "client",
+        "target": "gateway",
+        "label": "GraphQL Query",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 0
+        }
+      },
+      {
+        "id": "e1",
+        "type": "message",
+        "source": "gateway",
+        "target": "gateway",
+        "label": "Parse & Validate",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 1
+        }
+      },
+      {
+        "id": "e2",
+        "type": "message",
+        "source": "gateway",
+        "target": "resolver",
+        "label": "Execute Query",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 2
+        }
+      },
+      {
+        "id": "e3",
+        "type": "message",
+        "source": "resolver",
+        "target": "datasource",
+        "label": "Fetch Data",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 3
+        }
+      },
+      {
+        "id": "e4",
+        "type": "message",
+        "source": "datasource",
+        "target": "resolver",
+        "label": "Return Data",
+        "data": {
+          "messageType": "async",
+          "timestamp": 4
+        }
+      },
+      {
+        "id": "e5",
+        "type": "message",
+        "source": "resolver",
+        "target": "gateway",
+        "label": "Resolved Data",
+        "data": {
+          "messageType": "async",
+          "timestamp": 5
+        }
+      },
+      {
+        "id": "e6",
+        "type": "message",
+        "source": "gateway",
+        "target": "client",
+        "label": "JSON Response",
+        "data": {
+          "messageType": "async",
+          "timestamp": 6
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "timeline",
+    "direction": "LR"
+  }
+}
