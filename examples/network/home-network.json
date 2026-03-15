@@ -1,0 +1,127 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "network",
+  "metadata": {
+    "title": "Home Network Setup",
+    "description": "Residential network topology",
+    "author": "AIGP Examples",
+    "tags": [
+      "network",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "isp",
+        "type": "cloud",
+        "label": "ISP",
+        "data": {}
+      },
+      {
+        "id": "modem",
+        "type": "device",
+        "label": "Cable Modem",
+        "data": {
+          "ip": "DHCP"
+        }
+      },
+      {
+        "id": "router",
+        "type": "device",
+        "label": "Wireless Router",
+        "data": {
+          "ip": "192.168.1.1"
+        }
+      },
+      {
+        "id": "switch",
+        "type": "device",
+        "label": "Network Switch",
+        "data": {
+          "ip": "192.168.1.2"
+        }
+      },
+      {
+        "id": "pc",
+        "type": "device",
+        "label": "Desktop PC",
+        "data": {
+          "ip": "192.168.1.10"
+        }
+      },
+      {
+        "id": "laptop",
+        "type": "device",
+        "label": "Laptop",
+        "data": {
+          "ip": "192.168.1.11"
+        }
+      },
+      {
+        "id": "nas",
+        "type": "device",
+        "label": "NAS Storage",
+        "data": {
+          "ip": "192.168.1.20"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "connection",
+        "source": "isp",
+        "target": "modem",
+        "label": "Coax",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "connection",
+        "source": "modem",
+        "target": "router",
+        "label": "Ethernet",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "connection",
+        "source": "router",
+        "target": "switch",
+        "label": "Gigabit",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "connection",
+        "source": "switch",
+        "target": "pc",
+        "label": "Gigabit",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "connection",
+        "source": "switch",
+        "target": "nas",
+        "label": "Gigabit",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "connection",
+        "source": "router",
+        "target": "laptop",
+        "label": "WiFi",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

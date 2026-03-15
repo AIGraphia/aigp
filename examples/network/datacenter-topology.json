@@ -1,0 +1,127 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "network",
+  "metadata": {
+    "title": "Data Center Network Topology",
+    "description": "Enterprise network infrastructure",
+    "author": "AIGP Examples",
+    "tags": [
+      "network",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "internet",
+        "type": "cloud",
+        "label": "Internet",
+        "data": {}
+      },
+      {
+        "id": "firewall",
+        "type": "device",
+        "label": "Firewall",
+        "data": {
+          "ip": "10.0.0.1"
+        }
+      },
+      {
+        "id": "core_switch",
+        "type": "device",
+        "label": "Core Switch",
+        "data": {
+          "ip": "10.0.1.1"
+        }
+      },
+      {
+        "id": "dmz_switch",
+        "type": "device",
+        "label": "DMZ Switch",
+        "data": {
+          "ip": "10.0.2.1"
+        }
+      },
+      {
+        "id": "web_server",
+        "type": "device",
+        "label": "Web Server",
+        "data": {
+          "ip": "10.0.2.10"
+        }
+      },
+      {
+        "id": "db_server",
+        "type": "device",
+        "label": "DB Server",
+        "data": {
+          "ip": "10.0.3.10"
+        }
+      },
+      {
+        "id": "app_server",
+        "type": "device",
+        "label": "App Server",
+        "data": {
+          "ip": "10.0.3.20"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "connection",
+        "source": "internet",
+        "target": "firewall",
+        "label": "WAN",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "connection",
+        "source": "firewall",
+        "target": "core_switch",
+        "label": "10Gbps",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "connection",
+        "source": "core_switch",
+        "target": "dmz_switch",
+        "label": "10Gbps",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "connection",
+        "source": "dmz_switch",
+        "target": "web_server",
+        "label": "1Gbps",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "connection",
+        "source": "core_switch",
+        "target": "db_server",
+        "label": "10Gbps",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "connection",
+        "source": "core_switch",
+        "target": "app_server",
+        "label": "10Gbps",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

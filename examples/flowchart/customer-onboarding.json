@@ -1,0 +1,166 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "Customer Onboarding Flow",
+    "description": "New customer registration and setup process",
+    "author": "AIGP Examples",
+    "tags": [
+      "flowchart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "signup",
+        "type": "start",
+        "label": "Sign Up",
+        "data": {}
+      },
+      {
+        "id": "verify_email",
+        "type": "process",
+        "label": "Verify Email",
+        "data": {}
+      },
+      {
+        "id": "profile",
+        "type": "process",
+        "label": "Create Profile",
+        "data": {}
+      },
+      {
+        "id": "kyc",
+        "type": "decision",
+        "label": "KYC Required?",
+        "data": {}
+      },
+      {
+        "id": "kyc_check",
+        "type": "process",
+        "label": "KYC Verification",
+        "data": {}
+      },
+      {
+        "id": "approved",
+        "type": "decision",
+        "label": "Approved?",
+        "data": {}
+      },
+      {
+        "id": "activate",
+        "type": "process",
+        "label": "Activate Account",
+        "data": {}
+      },
+      {
+        "id": "reject",
+        "type": "process",
+        "label": "Reject Application",
+        "data": {}
+      },
+      {
+        "id": "welcome",
+        "type": "process",
+        "label": "Send Welcome",
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "label": "Complete",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "signup",
+        "target": "verify_email",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "verify_email",
+        "target": "profile",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "profile",
+        "target": "kyc",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "kyc",
+        "target": "kyc_check",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "kyc",
+        "target": "activate",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "kyc_check",
+        "target": "approved",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "approved",
+        "target": "activate",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "approved",
+        "target": "reject",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "flow",
+        "source": "activate",
+        "target": "welcome",
+        "data": {}
+      },
+      {
+        "id": "e9",
+        "type": "flow",
+        "source": "welcome",
+        "target": "end",
+        "data": {}
+      },
+      {
+        "id": "e10",
+        "type": "flow",
+        "source": "reject",
+        "target": "end",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

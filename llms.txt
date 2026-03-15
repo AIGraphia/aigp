@@ -1,0 +1,301 @@
+# AIGP - AI Graphic Protocol
+
+> AIGP is a universal JSON standard for AI-native diagram creation. Instead of generating fragile text syntax (Mermaid, PlantUML), generate structured JSON that validates, auto-layouts, and exports to any format.
+
+## Quick Start
+
+Generate a valid AIGP JSON document. No positions needed — auto-layout handles placement.
+
+```json
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "Diagram Title",
+    "description": "Brief description",
+    "author": "ai-agent",
+    "created": "2026-01-01T00:00:00Z"
+  },
+  "graph": {
+    "nodes": [
+      { "id": "start", "type": "start", "label": "Start", "data": {} },
+      { "id": "process", "type": "process", "label": "Do Something", "data": {} },
+      { "id": "end", "type": "end", "label": "End", "data": {} }
+    ],
+    "edges": [
+      { "id": "e1", "type": "flow", "source": "start", "target": "process", "data": {} },
+      { "id": "e2", "type": "flow", "source": "process", "target": "end", "data": {} }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}
+```
+
+## Required Fields
+
+Every AIGP document must have:
+- `schema`: Always `"https://aigraphia.com/schema/v1"`
+- `version`: Always `"1.0.0"`
+- `type`: One of the diagram types below
+- `metadata`: Object with at least `title`
+- `graph`: Object with `nodes` array and `edges` array
+- `layout`: Object with `algorithm` (and optionally `direction`)
+
+Every node must have: `id`, `type`, `label`, `data`
+Every edge must have: `id`, `type`, `source`, `target`, `data`
+Edges may optionally have: `label`
+
+## Diagram Types
+
+### Software Engineering
+- `flowchart` — Process flows, algorithms, decision trees
+- `sequence` — Temporal interactions, API calls, message flows
+- `architecture` — System design, microservices, infrastructure
+- `uml-class` — Object-oriented design, class hierarchies
+- `er` — Database schema, entity relationships
+- `state-machine` — State transitions, finite automata
+
+### Business & Process
+- `bpmn` — Business processes, workflows
+- `org-chart` — Organizational structure, reporting lines
+- `customer-journey` — User experiences, touchpoints
+- `value-stream` — Process steps with metrics
+- `kanban` — Task boards, workflow stages
+
+### Data & Analysis
+- `mind-map` — Brainstorming, concept exploration
+- `concept-map` — Knowledge relationships
+- `timeline` — Project planning, history, roadmaps
+- `sankey` — Flow analysis, resource allocation
+- `funnel` — Conversion analysis, sales pipelines
+- `network` — Generic node-edge graphs
+
+## Node Types by Diagram
+
+### flowchart
+- `start` — Entry point
+- `end` — Exit point
+- `process` — Processing step
+- `decision` — Conditional branch (diamond shape)
+- `input` — Input/output operation
+- `subprocess` — Nested process
+
+### sequence
+- `actor` — Human actor (requires `data.lifeline: true`)
+- `object` — System component (requires `data.lifeline: true`)
+- `database` — Database (requires `data.lifeline: true`)
+
+### architecture
+- `service` — Microservice
+- `database` — Database
+- `cache` — Cache layer (Redis, etc.)
+- `queue` — Message queue (Kafka, RabbitMQ, etc.)
+- `storage` — Object/file storage
+- `loadbalancer` — Load balancer
+- `external` — Third-party service
+
+### er
+- `entity` — Database table/entity
+- `relationship` — Relationship connector
+
+### uml-class
+- `class` — Class definition
+- `interface` — Interface
+- `enum` — Enumeration
+- `abstract` — Abstract class
+
+### org-chart
+- `executive` — C-level
+- `manager` — Manager
+- `employee` — Individual contributor
+- `contractor` — Contractor
+- `vacant` — Open position
+
+### mind-map
+- `central` — Central topic (exactly one required)
+- `main` — Main branch
+- `sub` — Sub-topic
+- `detail` — Detail leaf
+
+### state-machine
+- `state` — Regular state
+- `initial` — Initial state
+- `final` — Final/accepting state
+
+## Edge Types
+
+### General
+- `flow` — Standard directional flow
+- `conditional` — Conditional branch (use `label` for condition)
+- `data-flow` — Data movement
+
+### Sequence-specific
+- `sync` — Synchronous message
+- `async` — Asynchronous message
+- `return` — Return message
+
+### Architecture-specific
+- `http` — HTTP/REST connection
+- `grpc` — gRPC connection
+- `data` — Data connection
+- `event` — Event/message
+
+## Layout Algorithms
+
+- `hierarchical` — Tree/DAG layout (best for flowcharts, org charts). Supports `direction`: `TB`, `BT`, `LR`, `RL`
+- `layered` — Layered/Sugiyama layout (best for architecture diagrams)
+- `force` — Force-directed layout (best for network diagrams)
+- `radial` — Radial layout (best for mind maps)
+- `circular` — Circular arrangement
+- `timeline` — Left-to-right temporal layout (best for sequence diagrams)
+- `grid` — Grid arrangement (best for kanban boards)
+
+## Output Guidance
+
+### For chat interfaces (ChatGPT, Claude, etc.)
+1. Generate the AIGP JSON
+2. Also provide a Mermaid equivalent as a fenced code block for immediate rendering
+3. Link to the editor: `https://aigraphia.com/view?data={base64url_encoded_json}`
+
+### For code editors (VS Code, Cursor)
+1. Write the AIGP JSON to a `.json` file
+2. The AIGraphia extension renders it automatically
+
+### For programmatic use
+1. Generate the AIGP JSON
+2. Use `@aigraphia/converters` to export to Mermaid, SVG, PNG, or other formats
+
+## Key Principles
+
+1. **No positions** — Never specify `position` or `size` on nodes. Auto-layout handles placement.
+2. **Descriptive IDs** — Use readable IDs like `"userLogin"`, `"authService"`, not `"n1"`, `"n2"`.
+3. **Semantic types** — Use the correct node/edge types for the diagram type.
+4. **Minimal data** — Only include fields that add value. Empty `data: {}` is fine.
+5. **One diagram type** — Don't mix types. Choose the best fit for the content.
+
+## Common Mistakes
+
+- Adding `position` or `x`/`y` coordinates to nodes (auto-layout handles this)
+- Using numeric IDs (`"1"`, `"2"`) instead of descriptive ones
+- Forgetting `data.lifeline: true` on sequence diagram nodes
+- Forgetting the `central` node in mind maps
+- Missing required fields (`data` on nodes/edges is required, even if empty)
+
+## Full Examples
+
+### Flowchart: User Login
+
+```json
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": { "title": "User Login Flow" },
+  "graph": {
+    "nodes": [
+      { "id": "start", "type": "start", "label": "Start", "data": {} },
+      { "id": "enterCreds", "type": "input", "label": "Enter Credentials", "data": {} },
+      { "id": "validate", "type": "process", "label": "Validate", "data": {} },
+      { "id": "isValid", "type": "decision", "label": "Valid?", "data": {} },
+      { "id": "grantAccess", "type": "process", "label": "Grant Access", "data": {} },
+      { "id": "showError", "type": "process", "label": "Show Error", "data": {} },
+      { "id": "end", "type": "end", "label": "End", "data": {} }
+    ],
+    "edges": [
+      { "id": "e1", "type": "flow", "source": "start", "target": "enterCreds", "data": {} },
+      { "id": "e2", "type": "flow", "source": "enterCreds", "target": "validate", "data": {} },
+      { "id": "e3", "type": "flow", "source": "validate", "target": "isValid", "data": {} },
+      { "id": "e4", "type": "conditional", "source": "isValid", "target": "grantAccess", "label": "Yes", "data": {} },
+      { "id": "e5", "type": "conditional", "source": "isValid", "target": "showError", "label": "No", "data": {} },
+      { "id": "e6", "type": "flow", "source": "grantAccess", "target": "end", "data": {} },
+      { "id": "e7", "type": "flow", "source": "showError", "target": "enterCreds", "data": {} }
+    ]
+  },
+  "layout": { "algorithm": "hierarchical", "direction": "TB" }
+}
+```
+
+### Sequence: OAuth 2.0
+
+```json
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "sequence",
+  "metadata": { "title": "OAuth 2.0 Authorization Code Flow" },
+  "graph": {
+    "nodes": [
+      { "id": "user", "type": "actor", "label": "User", "data": { "lifeline": true } },
+      { "id": "client", "type": "object", "label": "Client App", "data": { "lifeline": true } },
+      { "id": "authServer", "type": "object", "label": "Auth Server", "data": { "lifeline": true } },
+      { "id": "resource", "type": "object", "label": "Resource API", "data": { "lifeline": true } }
+    ],
+    "edges": [
+      { "id": "e1", "type": "sync", "source": "user", "target": "client", "label": "Login", "data": { "timestamp": 1 } },
+      { "id": "e2", "type": "sync", "source": "client", "target": "authServer", "label": "Authorization Request", "data": { "timestamp": 2 } },
+      { "id": "e3", "type": "return", "source": "authServer", "target": "client", "label": "Authorization Code", "data": { "timestamp": 3 } },
+      { "id": "e4", "type": "sync", "source": "client", "target": "authServer", "label": "Exchange Code for Token", "data": { "timestamp": 4 } },
+      { "id": "e5", "type": "return", "source": "authServer", "target": "client", "label": "Access Token", "data": { "timestamp": 5 } },
+      { "id": "e6", "type": "sync", "source": "client", "target": "resource", "label": "API Request + Token", "data": { "timestamp": 6 } },
+      { "id": "e7", "type": "return", "source": "resource", "target": "client", "label": "Protected Data", "data": { "timestamp": 7 } }
+    ]
+  },
+  "layout": { "algorithm": "timeline", "direction": "TB" }
+}
+```
+
+### Architecture: Microservices
+
+```json
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "architecture",
+  "metadata": { "title": "E-Commerce Microservices" },
+  "graph": {
+    "nodes": [
+      { "id": "lb", "type": "loadbalancer", "label": "Load Balancer", "data": {} },
+      { "id": "apiGateway", "type": "service", "label": "API Gateway", "data": {} },
+      { "id": "authService", "type": "service", "label": "Auth Service", "data": {} },
+      { "id": "productService", "type": "service", "label": "Product Service", "data": {} },
+      { "id": "orderService", "type": "service", "label": "Order Service", "data": {} },
+      { "id": "postgres", "type": "database", "label": "PostgreSQL", "data": {} },
+      { "id": "redis", "type": "cache", "label": "Redis Cache", "data": {} },
+      { "id": "kafka", "type": "queue", "label": "Kafka", "data": {} }
+    ],
+    "edges": [
+      { "id": "e1", "type": "http", "source": "lb", "target": "apiGateway", "data": {} },
+      { "id": "e2", "type": "http", "source": "apiGateway", "target": "authService", "data": {} },
+      { "id": "e3", "type": "http", "source": "apiGateway", "target": "productService", "data": {} },
+      { "id": "e4", "type": "http", "source": "apiGateway", "target": "orderService", "data": {} },
+      { "id": "e5", "type": "data", "source": "authService", "target": "postgres", "data": {} },
+      { "id": "e6", "type": "data", "source": "productService", "target": "postgres", "data": {} },
+      { "id": "e7", "type": "data", "source": "orderService", "target": "postgres", "data": {} },
+      { "id": "e8", "type": "data", "source": "productService", "target": "redis", "data": {} },
+      { "id": "e9", "type": "event", "source": "orderService", "target": "kafka", "data": {} },
+      { "id": "e10", "type": "event", "source": "kafka", "target": "productService", "label": "inventory update", "data": {} }
+    ]
+  },
+  "layout": { "algorithm": "layered", "direction": "TB" }
+}
+```
+
+## Packages (npm)
+
+- `@aigraphia/protocol` — Core schema and validation
+- `@aigraphia/plugins` — Diagram type implementations
+- `@aigraphia/layout` — Auto-layout engines
+- `@aigraphia/cli` — Command-line tool
+- `@aigraphia/converters` — Format conversion (Mermaid, etc.)
+- `@aigraphia/export` — SVG/PNG rendering
+
+## Links
+
+- Schema: https://aigraphia.com/schema/v1
+- Editor: https://aigraphia.com
+- GitHub: https://github.com/aigp/aigp
+- npm: https://www.npmjs.com/package/@aigraphia/protocol

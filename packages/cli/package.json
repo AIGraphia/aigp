@@ -1,0 +1,61 @@
+{
+  "name": "@aigraphia/cli",
+  "version": "1.0.1",
+  "description": "CLI tool for AIGP",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "aigp": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest",
+    "lint": "eslint src/",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@aigraphia/export": "workspace:*",
+    "@aigraphia/layout": "workspace:*",
+    "@aigraphia/plugins": "workspace:*",
+    "@aigraphia/protocol": "workspace:*",
+    "chalk": "^5.6.2",
+    "commander": "^14.0.3",
+    "inquirer": "^13.3.0",
+    "ora": "^9.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aigp/aigp.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/aigp/aigp/issues"
+  },
+  "homepage": "https://github.com/aigp/aigp/tree/main/packages/cli",
+  "author": "AIGP Contributors",
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "keywords": [
+    "aigp",
+    "cli",
+    "diagrams",
+    "command-line"
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "sequence",
+  "metadata": {
+    "title": "OAuth 2.0 Flow",
+    "description": "OAuth 2.0 authorization code flow",
+    "author": "aigraphia",
+    "created": "2026-03-09T00:00:00Z"
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "user",
+        "type": "actor",
+        "label": "User",
+        "data": {
+          "lifeline": true
+        }
+      },
+      {
+        "id": "client",
+        "type": "object",
+        "label": "Client App",
+        "data": {
+          "lifeline": true
+        }
+      },
+      {
+        "id": "auth",
+        "type": "object",
+        "label": "Auth Server",
+        "data": {
+          "lifeline": true
+        }
+      },
+      {
+        "id": "resource",
+        "type": "object",
+        "label": "Resource Server",
+        "data": {
+          "lifeline": true
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "type": "sync",
+        "source": "user",
+        "target": "client",
+        "label": "Click Login",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 1
+        }
+      },
+      {
+        "id": "e2",
+        "type": "sync",
+        "source": "client",
+        "target": "auth",
+        "label": "Authorization Request",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 2
+        }
+      },
+      {
+        "id": "e3",
+        "type": "sync",
+        "source": "auth",
+        "target": "user",
+        "label": "Login Prompt",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 3
+        }
+      },
+      {
+        "id": "e4",
+        "type": "sync",
+        "source": "user",
+        "target": "auth",
+        "label": "Credentials",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 4
+        }
+      },
+      {
+        "id": "e5",
+        "type": "return",
+        "source": "auth",
+        "target": "client",
+        "label": "Authorization Code",
+        "data": {
+          "messageType": "return",
+          "timestamp": 5
+        }
+      },
+      {
+        "id": "e6",
+        "type": "sync",
+        "source": "client",
+        "target": "auth",
+        "label": "Exchange Code for Token",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 6
+        }
+      },
+      {
+        "id": "e7",
+        "type": "return",
+        "source": "auth",
+        "target": "client",
+        "label": "Access Token",
+        "data": {
+          "messageType": "return",
+          "timestamp": 7
+        }
+      },
+      {
+        "id": "e8",
+        "type": "sync",
+        "source": "client",
+        "target": "resource",
+        "label": "API Request + Token",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 8
+        }
+      },
+      {
+        "id": "e9",
+        "type": "return",
+        "source": "resource",
+        "target": "client",
+        "label": "Protected Data",
+        "data": {
+          "messageType": "return",
+          "timestamp": 9
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "timeline",
+    "direction": "TB"
+  }
+}

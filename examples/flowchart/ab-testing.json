@@ -1,0 +1,192 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "A/B Testing Workflow",
+    "description": "Feature experiment and rollout process",
+    "author": "AIGP Examples",
+    "tags": [
+      "flowchart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "hypothesis",
+        "type": "start",
+        "label": "Define Hypothesis",
+        "data": {}
+      },
+      {
+        "id": "design",
+        "type": "process",
+        "label": "Design Experiment",
+        "data": {}
+      },
+      {
+        "id": "implement",
+        "type": "process",
+        "label": "Implement Variants",
+        "data": {}
+      },
+      {
+        "id": "deploy",
+        "type": "process",
+        "label": "Deploy to Subset",
+        "data": {}
+      },
+      {
+        "id": "collect",
+        "type": "process",
+        "label": "Collect Data",
+        "data": {}
+      },
+      {
+        "id": "analyze",
+        "type": "process",
+        "label": "Statistical Analysis",
+        "data": {}
+      },
+      {
+        "id": "significant",
+        "type": "decision",
+        "label": "Significant?",
+        "data": {}
+      },
+      {
+        "id": "winner",
+        "type": "decision",
+        "label": "Winner?",
+        "data": {}
+      },
+      {
+        "id": "rollout",
+        "type": "process",
+        "label": "Full Rollout",
+        "data": {}
+      },
+      {
+        "id": "rollback",
+        "type": "process",
+        "label": "Rollback",
+        "data": {}
+      },
+      {
+        "id": "iterate",
+        "type": "process",
+        "label": "Iterate",
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "label": "Complete",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "hypothesis",
+        "target": "design",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "design",
+        "target": "implement",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "implement",
+        "target": "deploy",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "deploy",
+        "target": "collect",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "collect",
+        "target": "analyze",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "analyze",
+        "target": "significant",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "significant",
+        "target": "winner",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "significant",
+        "target": "iterate",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "flow",
+        "source": "winner",
+        "target": "rollout",
+        "label": "Variant Wins",
+        "data": {}
+      },
+      {
+        "id": "e9",
+        "type": "flow",
+        "source": "winner",
+        "target": "rollback",
+        "label": "Control Wins",
+        "data": {}
+      },
+      {
+        "id": "e10",
+        "type": "flow",
+        "source": "rollout",
+        "target": "end",
+        "data": {}
+      },
+      {
+        "id": "e11",
+        "type": "flow",
+        "source": "rollback",
+        "target": "end",
+        "data": {}
+      },
+      {
+        "id": "e12",
+        "type": "flow",
+        "source": "iterate",
+        "target": "design",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

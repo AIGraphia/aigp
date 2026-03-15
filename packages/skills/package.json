@@ -1,0 +1,36 @@
+{
+  "name": "@aigraphia/skills",
+  "version": "1.0.0",
+  "description": "AI Skills for universal agent integration with AIGP",
+  "private": true,
+  "scripts": {
+    "test": "echo \"No tests yet\"",
+    "clean": "echo 'Nothing to clean'"
+  },
+  "keywords": [
+    "aigp",
+    "ai-skills",
+    "diagrams",
+    "claude",
+    "chatgpt"
+  ],
+  "files": [
+    "*.md",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/aigp/aigp.git",
+    "directory": "packages/skills"
+  },
+  "bugs": {
+    "url": "https://github.com/aigp/aigp/issues"
+  },
+  "homepage": "https://github.com/aigp/aigp/tree/main/packages/skills",
+  "author": "AIGP Contributors",
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT"
+}

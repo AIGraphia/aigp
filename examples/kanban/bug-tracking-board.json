@@ -1,0 +1,78 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "kanban",
+  "metadata": {
+    "title": "Bug Tracking Kanban",
+    "description": "Bug resolution workflow board",
+    "author": "AIGP Examples",
+    "tags": [
+      "kanban",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "reported_1",
+        "type": "card",
+        "label": "Login Page Crash",
+        "data": {
+          "column": "Reported",
+          "priority": "Critical"
+        }
+      },
+      {
+        "id": "reported_2",
+        "type": "card",
+        "label": "Slow Dashboard Load",
+        "data": {
+          "column": "Reported",
+          "priority": "Medium"
+        }
+      },
+      {
+        "id": "triaged_1",
+        "type": "card",
+        "label": "Broken Link in Footer",
+        "data": {
+          "column": "Triaged",
+          "priority": "Low"
+        }
+      },
+      {
+        "id": "fixing_1",
+        "type": "card",
+        "label": "Form Validation Error",
+        "data": {
+          "column": "Fixing",
+          "assignee": "Alex"
+        }
+      },
+      {
+        "id": "testing_1",
+        "type": "card",
+        "label": "API Timeout Issue",
+        "data": {
+          "column": "Testing",
+          "assignee": "Blake"
+        }
+      },
+      {
+        "id": "resolved_1",
+        "type": "card",
+        "label": "CSS Layout Bug",
+        "data": {
+          "column": "Resolved",
+          "assignee": "Casey"
+        }
+      }
+    ],
+    "edges": []
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

@@ -1,0 +1,302 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "AIGP - AI Graphic Protocol",
+    "description": "Convert natural language descriptions into professional diagrams using the AIGP standard. Supports 20+ diagram types including flowcharts, sequence diagrams, ER diagrams, network diagrams, and more.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://api.aigp.dev"
+    }
+  ],
+  "paths": {
+    "/v1/diagrams/create": {
+      "post": {
+        "operationId": "createDiagram",
+        "summary": "Create a diagram from natural language",
+        "description": "Generate an AIGP diagram from a text description. The AI will determine the best diagram type and structure.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["description"],
+                "properties": {
+                  "description": {
+                    "type": "string",
+                    "description": "Natural language description of the diagram. Be specific about the type and content.",
+                    "example": "Create a flowchart showing the user authentication process: login page -> validate credentials -> check if valid -> grant access or show error"
+                  },
+                  "diagramType": {
+                    "type": "string",
+                    "enum": [
+                      "flowchart",
+                      "sequence",
+                      "class",
+                      "er",
+                      "state",
+                      "network",
+                      "mindmap",
+                      "gantt",
+                      "timeline"
+                    ],
+                    "description": "Preferred diagram type (optional - AI will auto-detect if not specified)"
+                  },
+                  "style": {
+                    "type": "string",
+                    "enum": ["minimal", "detailed", "technical", "business"],
+                    "default": "detailed",
+                    "description": "Visual style preference"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Diagram created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiagramResponse"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Invalid request",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/diagrams/convert": {
+      "post": {
+        "operationId": "convertDiagram",
+        "summary": "Convert diagram between formats",
+        "description": "Convert diagrams between AIGP, Mermaid, PlantUML, and other formats.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["content", "from", "to"],
+                "properties": {
+                  "content": {
+                    "type": "string",
+                    "description": "The diagram content to convert"
+                  },
+                  "from": {
+                    "type": "string",
+                    "enum": ["aigp", "mermaid", "plantuml", "dot"],
+                    "description": "Source format"
+                  },
+                  "to": {
+                    "type": "string",
+                    "enum": ["aigp", "mermaid", "plantuml", "svg", "png"],
+                    "description": "Target format"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Conversion successful",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ConversionResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/diagrams/validate": {
+      "post": {
+        "operationId": "validateDiagram",
+        "summary": "Validate AIGP diagram",
+        "description": "Check if an AIGP diagram is valid according to the protocol specification.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["diagram"],
+                "properties": {
+                  "diagram": {
+                    "type": "object",
+                    "description": "The AIGP diagram JSON to validate"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Validation result",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ValidationResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/diagrams/enhance": {
+      "post": {
+        "operationId": "enhanceDiagram",
+        "summary": "Enhance existing diagram",
+        "description": "Add more detail, improve layout, or optimize an existing AIGP diagram.",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": ["diagram", "instructions"],
+                "properties": {
+                  "diagram": {
+                    "type": "object",
+                    "description": "The AIGP diagram to enhance"
+                  },
+                  "instructions": {
+                    "type": "string",
+                    "description": "What to improve or add",
+                    "example": "Add error handling flows and make the layout more compact"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Enhanced diagram",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DiagramResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "DiagramResponse": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "description": "Unique diagram ID"
+          },
+          "diagram": {
+            "type": "object",
+            "description": "The AIGP diagram JSON"
+          },
+          "mermaidPreview": {
+            "type": "string",
+            "description": "Mermaid syntax for quick preview"
+          },
+          "imageUrl": {
+            "type": "string",
+            "description": "URL to rendered PNG image"
+          },
+          "editUrl": {
+            "type": "string",
+            "description": "URL to edit in AIGraphia web editor"
+          }
+        }
+      },
+      "ConversionResponse": {
+        "type": "object",
+        "properties": {
+          "result": {
+            "type": "string",
+            "description": "The converted diagram content"
+          },
+          "format": {
+            "type": "string",
+            "description": "Output format"
+          }
+        }
+      },
+      "ValidationResponse": {
+        "type": "object",
+        "properties": {
+          "valid": {
+            "type": "boolean",
+            "description": "Whether the diagram is valid"
+          },
+          "errors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "message": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "warnings": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "code": {
+            "type": "string",
+            "description": "Error code"
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "ApiKeyAuth": {
+        "type": "apiKey",
+        "in": "header",
+        "name": "X-API-Key"
+      }
+    }
+  },
+  "security": [
+    {
+      "ApiKeyAuth": []
+    }
+  ]
+}

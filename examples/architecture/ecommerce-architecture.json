@@ -1,0 +1,234 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "architecture",
+  "metadata": {
+    "title": "E-Commerce Microservices Architecture",
+    "description": "Complete e-commerce platform architecture with microservices",
+    "author": "AIGraphia Team",
+    "created": "2026-03-09T00:00:00Z",
+    "tags": ["architecture", "microservices", "e-commerce"]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "cdn",
+        "type": "external",
+        "label": "CDN",
+        "data": {
+          "description": "CloudFlare CDN"
+        }
+      },
+      {
+        "id": "lb",
+        "type": "loadbalancer",
+        "label": "Load Balancer",
+        "data": {}
+      },
+      {
+        "id": "api",
+        "type": "service",
+        "label": "API Gateway",
+        "data": {}
+      },
+      {
+        "id": "auth",
+        "type": "service",
+        "label": "Auth Service",
+        "data": {}
+      },
+      {
+        "id": "products",
+        "type": "service",
+        "label": "Product Service",
+        "data": {}
+      },
+      {
+        "id": "orders",
+        "type": "service",
+        "label": "Order Service",
+        "data": {}
+      },
+      {
+        "id": "payments",
+        "type": "service",
+        "label": "Payment Service",
+        "data": {}
+      },
+      {
+        "id": "notifications",
+        "type": "service",
+        "label": "Notification Service",
+        "data": {}
+      },
+      {
+        "id": "userdb",
+        "type": "database",
+        "label": "User DB (PostgreSQL)",
+        "data": {}
+      },
+      {
+        "id": "productdb",
+        "type": "database",
+        "label": "Product DB (PostgreSQL)",
+        "data": {}
+      },
+      {
+        "id": "orderdb",
+        "type": "database",
+        "label": "Order DB (PostgreSQL)",
+        "data": {}
+      },
+      {
+        "id": "redis",
+        "type": "cache",
+        "label": "Redis Cache",
+        "data": {}
+      },
+      {
+        "id": "kafka",
+        "type": "queue",
+        "label": "Kafka",
+        "data": {}
+      },
+      {
+        "id": "s3",
+        "type": "storage",
+        "label": "S3 Storage",
+        "data": {}
+      },
+      {
+        "id": "stripe",
+        "type": "external",
+        "label": "Stripe API",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "type": "http",
+        "source": "cdn",
+        "target": "lb",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "http",
+        "source": "lb",
+        "target": "api",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "http",
+        "source": "api",
+        "target": "auth",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "http",
+        "source": "api",
+        "target": "products",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "http",
+        "source": "api",
+        "target": "orders",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "data",
+        "source": "auth",
+        "target": "userdb",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "data",
+        "source": "products",
+        "target": "productdb",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "data",
+        "source": "orders",
+        "target": "orderdb",
+        "data": {}
+      },
+      {
+        "id": "e9",
+        "type": "data",
+        "source": "products",
+        "target": "redis",
+        "data": {}
+      },
+      {
+        "id": "e10",
+        "type": "http",
+        "source": "orders",
+        "target": "payments",
+        "data": {}
+      },
+      {
+        "id": "e11",
+        "type": "http",
+        "source": "payments",
+        "target": "stripe",
+        "data": {}
+      },
+      {
+        "id": "e12",
+        "type": "message",
+        "source": "orders",
+        "target": "kafka",
+        "label": "order.created",
+        "data": {}
+      },
+      {
+        "id": "e13",
+        "type": "message",
+        "source": "kafka",
+        "target": "notifications",
+        "data": {}
+      },
+      {
+        "id": "e14",
+        "type": "data",
+        "source": "products",
+        "target": "s3",
+        "label": "product images",
+        "data": {}
+      }
+    ],
+    "groups": [
+      {
+        "id": "vpc",
+        "type": "vpc",
+        "label": "VPC",
+        "nodeIds": ["api", "auth", "products", "orders", "payments", "notifications"],
+        "data": {}
+      },
+      {
+        "id": "data-layer",
+        "type": "cluster",
+        "label": "Data Layer",
+        "nodeIds": ["userdb", "productdb", "orderdb", "redis", "kafka"],
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "layered",
+    "direction": "TB",
+    "spacing": {
+      "node": 80,
+      "rank": 120
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "funnel",
+  "metadata": {
+    "title": "Sales Conversion Funnel",
+    "description": "Customer journey conversion stages",
+    "author": "AIGP Examples",
+    "tags": [
+      "funnel",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "visitors",
+        "type": "stage",
+        "label": "Website Visitors",
+        "data": {
+          "value": 10000
+        }
+      },
+      {
+        "id": "signups",
+        "type": "stage",
+        "label": "Sign Ups",
+        "data": {
+          "value": 2000
+        }
+      },
+      {
+        "id": "trials",
+        "type": "stage",
+        "label": "Free Trials",
+        "data": {
+          "value": 500
+        }
+      },
+      {
+        "id": "customers",
+        "type": "stage",
+        "label": "Paying Customers",
+        "data": {
+          "value": 100
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "visitors",
+        "target": "signups",
+        "data": {
+          "conversion": 0.2
+        }
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "signups",
+        "target": "trials",
+        "data": {
+          "conversion": 0.25
+        }
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "trials",
+        "target": "customers",
+        "data": {
+          "conversion": 0.2
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

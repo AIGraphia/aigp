@@ -1,0 +1,116 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "er",
+  "metadata": {
+    "title": "Library Management System",
+    "description": "Database design for library operations",
+    "author": "AIGP Examples",
+    "tags": [
+      "er",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "members",
+        "type": "entity",
+        "label": "Members",
+        "data": {
+          "attributes": [
+            "member_id (PK)",
+            "name",
+            "email",
+            "join_date"
+          ]
+        }
+      },
+      {
+        "id": "books",
+        "type": "entity",
+        "label": "Books",
+        "data": {
+          "attributes": [
+            "book_id (PK)",
+            "isbn",
+            "title",
+            "author"
+          ]
+        }
+      },
+      {
+        "id": "loans",
+        "type": "entity",
+        "label": "Loans",
+        "data": {
+          "attributes": [
+            "loan_id (PK)",
+            "member_id (FK)",
+            "book_id (FK)",
+            "due_date"
+          ]
+        }
+      },
+      {
+        "id": "reservations",
+        "type": "entity",
+        "label": "Reservations",
+        "data": {
+          "attributes": [
+            "reservation_id (PK)",
+            "member_id (FK)",
+            "book_id (FK)"
+          ]
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "relationship",
+        "source": "members",
+        "target": "loans",
+        "label": "borrows",
+        "data": {
+          "cardinality": "1:N"
+        }
+      },
+      {
+        "id": "e1",
+        "type": "relationship",
+        "source": "books",
+        "target": "loans",
+        "label": "loaned in",
+        "data": {
+          "cardinality": "1:N"
+        }
+      },
+      {
+        "id": "e2",
+        "type": "relationship",
+        "source": "members",
+        "target": "reservations",
+        "label": "reserves",
+        "data": {
+          "cardinality": "1:N"
+        }
+      },
+      {
+        "id": "e3",
+        "type": "relationship",
+        "source": "books",
+        "target": "reservations",
+        "label": "reserved as",
+        "data": {
+          "cardinality": "1:N"
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

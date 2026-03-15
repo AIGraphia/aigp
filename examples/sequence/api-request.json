@@ -1,0 +1,143 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "sequence",
+  "metadata": {
+    "title": "REST API Request Flow",
+    "description": "Client-server API interaction with authentication",
+    "author": "AIGP Examples",
+    "tags": [
+      "sequence",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "client",
+        "type": "actor",
+        "label": "Client",
+        "data": {}
+      },
+      {
+        "id": "api_gateway",
+        "type": "actor",
+        "label": "API Gateway",
+        "data": {}
+      },
+      {
+        "id": "auth_service",
+        "type": "actor",
+        "label": "Auth Service",
+        "data": {}
+      },
+      {
+        "id": "backend",
+        "type": "actor",
+        "label": "Backend Service",
+        "data": {}
+      },
+      {
+        "id": "database",
+        "type": "actor",
+        "label": "Database",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "message",
+        "source": "client",
+        "target": "api_gateway",
+        "label": "POST /api/data",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 0
+        }
+      },
+      {
+        "id": "e1",
+        "type": "message",
+        "source": "api_gateway",
+        "target": "auth_service",
+        "label": "Validate Token",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 1
+        }
+      },
+      {
+        "id": "e2",
+        "type": "message",
+        "source": "auth_service",
+        "target": "api_gateway",
+        "label": "Token Valid",
+        "data": {
+          "messageType": "async",
+          "timestamp": 2
+        }
+      },
+      {
+        "id": "e3",
+        "type": "message",
+        "source": "api_gateway",
+        "target": "backend",
+        "label": "Forward Request",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 3
+        }
+      },
+      {
+        "id": "e4",
+        "type": "message",
+        "source": "backend",
+        "target": "database",
+        "label": "Query Data",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 4
+        }
+      },
+      {
+        "id": "e5",
+        "type": "message",
+        "source": "database",
+        "target": "backend",
+        "label": "Return Results",
+        "data": {
+          "messageType": "async",
+          "timestamp": 5
+        }
+      },
+      {
+        "id": "e6",
+        "type": "message",
+        "source": "backend",
+        "target": "api_gateway",
+        "label": "Response",
+        "data": {
+          "messageType": "async",
+          "timestamp": 6
+        }
+      },
+      {
+        "id": "e7",
+        "type": "message",
+        "source": "api_gateway",
+        "target": "client",
+        "label": "200 OK",
+        "data": {
+          "messageType": "async",
+          "timestamp": 7
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "timeline",
+    "direction": "LR"
+  }
+}

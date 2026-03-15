@@ -1,0 +1,87 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "kanban",
+  "metadata": {
+    "title": "Sprint Kanban Board",
+    "description": "Agile sprint task board",
+    "author": "AIGP Examples",
+    "tags": [
+      "kanban",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "todo_1",
+        "type": "card",
+        "label": "User Authentication",
+        "data": {
+          "column": "To Do",
+          "assignee": "Alice"
+        }
+      },
+      {
+        "id": "todo_2",
+        "type": "card",
+        "label": "API Documentation",
+        "data": {
+          "column": "To Do",
+          "assignee": "Bob"
+        }
+      },
+      {
+        "id": "inprogress_1",
+        "type": "card",
+        "label": "Payment Integration",
+        "data": {
+          "column": "In Progress",
+          "assignee": "Carol"
+        }
+      },
+      {
+        "id": "inprogress_2",
+        "type": "card",
+        "label": "Database Migration",
+        "data": {
+          "column": "In Progress",
+          "assignee": "David"
+        }
+      },
+      {
+        "id": "review_1",
+        "type": "card",
+        "label": "UI Components",
+        "data": {
+          "column": "Review",
+          "assignee": "Eve"
+        }
+      },
+      {
+        "id": "done_1",
+        "type": "card",
+        "label": "Setup CI/CD",
+        "data": {
+          "column": "Done",
+          "assignee": "Frank"
+        }
+      },
+      {
+        "id": "done_2",
+        "type": "card",
+        "label": "Docker Config",
+        "data": {
+          "column": "Done",
+          "assignee": "Grace"
+        }
+      }
+    ],
+    "edges": []
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

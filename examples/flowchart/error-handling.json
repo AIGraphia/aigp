@@ -1,0 +1,140 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "Error Handling Flow",
+    "description": "Application error handling and recovery process",
+    "author": "AIGP Examples",
+    "tags": [
+      "flowchart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "operation",
+        "type": "process",
+        "label": "Execute Operation",
+        "data": {}
+      },
+      {
+        "id": "error_check",
+        "type": "decision",
+        "label": "Error?",
+        "data": {}
+      },
+      {
+        "id": "log_error",
+        "type": "process",
+        "label": "Log Error",
+        "data": {}
+      },
+      {
+        "id": "retry_check",
+        "type": "decision",
+        "label": "Retryable?",
+        "data": {}
+      },
+      {
+        "id": "retry",
+        "type": "process",
+        "label": "Retry Operation",
+        "data": {}
+      },
+      {
+        "id": "fallback",
+        "type": "process",
+        "label": "Use Fallback",
+        "data": {}
+      },
+      {
+        "id": "alert",
+        "type": "process",
+        "label": "Alert Team",
+        "data": {}
+      },
+      {
+        "id": "success",
+        "type": "end",
+        "label": "Success",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "operation",
+        "target": "error_check",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "error_check",
+        "target": "success",
+        "label": "No Error",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "error_check",
+        "target": "log_error",
+        "label": "Error",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "log_error",
+        "target": "retry_check",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "retry_check",
+        "target": "retry",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "retry_check",
+        "target": "fallback",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "retry",
+        "target": "operation",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "fallback",
+        "target": "alert",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "flow",
+        "source": "alert",
+        "target": "success",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

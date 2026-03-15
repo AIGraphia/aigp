@@ -1,0 +1,153 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "state-machine",
+  "metadata": {
+    "title": "Network Connection States",
+    "description": "TCP connection state machine",
+    "author": "AIGP Examples",
+    "tags": [
+      "state-machine",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "closed",
+        "type": "state",
+        "label": "Closed",
+        "data": {}
+      },
+      {
+        "id": "listen",
+        "type": "state",
+        "label": "Listen",
+        "data": {}
+      },
+      {
+        "id": "syn_sent",
+        "type": "state",
+        "label": "SYN Sent",
+        "data": {}
+      },
+      {
+        "id": "syn_received",
+        "type": "state",
+        "label": "SYN Received",
+        "data": {}
+      },
+      {
+        "id": "established",
+        "type": "state",
+        "label": "Established",
+        "data": {}
+      },
+      {
+        "id": "fin_wait",
+        "type": "state",
+        "label": "FIN Wait",
+        "data": {}
+      },
+      {
+        "id": "close_wait",
+        "type": "state",
+        "label": "Close Wait",
+        "data": {}
+      },
+      {
+        "id": "closing",
+        "type": "state",
+        "label": "Closing",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "transition",
+        "source": "closed",
+        "target": "listen",
+        "label": "passive open",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "transition",
+        "source": "closed",
+        "target": "syn_sent",
+        "label": "active open",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "transition",
+        "source": "listen",
+        "target": "syn_received",
+        "label": "receive SYN",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "transition",
+        "source": "syn_sent",
+        "target": "established",
+        "label": "receive SYN+ACK",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "transition",
+        "source": "syn_received",
+        "target": "established",
+        "label": "receive ACK",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "transition",
+        "source": "established",
+        "target": "fin_wait",
+        "label": "close",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "transition",
+        "source": "established",
+        "target": "close_wait",
+        "label": "receive FIN",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "transition",
+        "source": "fin_wait",
+        "target": "closing",
+        "label": "receive FIN",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "transition",
+        "source": "close_wait",
+        "target": "closed",
+        "label": "send FIN",
+        "data": {}
+      },
+      {
+        "id": "e9",
+        "type": "transition",
+        "source": "closing",
+        "target": "closed",
+        "label": "receive ACK",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

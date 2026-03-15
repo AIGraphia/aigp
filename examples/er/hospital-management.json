@@ -1,0 +1,107 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "er",
+  "metadata": {
+    "title": "Hospital Management System",
+    "description": "Healthcare management database schema",
+    "author": "AIGP Examples",
+    "tags": [
+      "er",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "patients",
+        "type": "entity",
+        "label": "Patients",
+        "data": {
+          "attributes": [
+            "patient_id (PK)",
+            "name",
+            "dob",
+            "phone"
+          ]
+        }
+      },
+      {
+        "id": "doctors",
+        "type": "entity",
+        "label": "Doctors",
+        "data": {
+          "attributes": [
+            "doctor_id (PK)",
+            "name",
+            "specialization",
+            "license"
+          ]
+        }
+      },
+      {
+        "id": "appointments",
+        "type": "entity",
+        "label": "Appointments",
+        "data": {
+          "attributes": [
+            "appointment_id (PK)",
+            "patient_id (FK)",
+            "doctor_id (FK)",
+            "datetime"
+          ]
+        }
+      },
+      {
+        "id": "prescriptions",
+        "type": "entity",
+        "label": "Prescriptions",
+        "data": {
+          "attributes": [
+            "prescription_id (PK)",
+            "appointment_id (FK)",
+            "medication",
+            "dosage"
+          ]
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "relationship",
+        "source": "patients",
+        "target": "appointments",
+        "label": "schedules",
+        "data": {
+          "cardinality": "1:N"
+        }
+      },
+      {
+        "id": "e1",
+        "type": "relationship",
+        "source": "doctors",
+        "target": "appointments",
+        "label": "conducts",
+        "data": {
+          "cardinality": "1:N"
+        }
+      },
+      {
+        "id": "e2",
+        "type": "relationship",
+        "source": "appointments",
+        "target": "prescriptions",
+        "label": "generates",
+        "data": {
+          "cardinality": "1:N"
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}
