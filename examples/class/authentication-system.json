@@ -1,0 +1,113 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "class",
+  "metadata": {
+    "title": "Authentication System Design",
+    "description": "User authentication and authorization classes",
+    "author": "AIGP Examples",
+    "tags": [
+      "class",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "User",
+        "type": "class",
+        "label": "User",
+        "data": {
+          "attributes": [
+            "id: string",
+            "email: string",
+            "passwordHash: string"
+          ],
+          "methods": [
+            "authenticate()",
+            "resetPassword()"
+          ]
+        }
+      },
+      {
+        "id": "Session",
+        "type": "class",
+        "label": "Session",
+        "data": {
+          "attributes": [
+            "token: string",
+            "expiresAt: Date"
+          ],
+          "methods": [
+            "validate()",
+            "refresh()"
+          ]
+        }
+      },
+      {
+        "id": "Permission",
+        "type": "class",
+        "label": "Permission",
+        "data": {
+          "attributes": [
+            "name: string",
+            "resource: string"
+          ],
+          "methods": [
+            "check()"
+          ]
+        }
+      },
+      {
+        "id": "Role",
+        "type": "class",
+        "label": "Role",
+        "data": {
+          "attributes": [
+            "name: string"
+          ],
+          "methods": [
+            "assignPermission()"
+          ]
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "association",
+        "source": "User",
+        "target": "Session",
+        "label": "has",
+        "data": {
+          "cardinality": "1..*"
+        }
+      },
+      {
+        "id": "e1",
+        "type": "association",
+        "source": "User",
+        "target": "Role",
+        "label": "has",
+        "data": {
+          "cardinality": "*"
+        }
+      },
+      {
+        "id": "e2",
+        "type": "association",
+        "source": "Role",
+        "target": "Permission",
+        "label": "grants",
+        "data": {
+          "cardinality": "*"
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

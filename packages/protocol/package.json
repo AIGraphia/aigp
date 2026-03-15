@@ -1,0 +1,52 @@
+{
+  "name": "@aigraphia/protocol",
+  "version": "1.0.1",
+  "description": "Universal JSON protocol for AI-native diagrams",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest",
+    "lint": "eslint src/",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "zod": "^3.25.76",
+    "zod-to-json-schema": "^3.25.1"
+  },
+  "devDependencies": {
+    "@types/node": "^25.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AIGraphia/aigp.git",
+    "directory": "packages/protocol"
+  },
+  "bugs": {
+    "url": "https://github.com/AIGraphia/aigp/issues"
+  },
+  "homepage": "https://github.com/AIGraphia/aigp/tree/main/packages/protocol",
+  "author": "AIGP Contributors",
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "keywords": [
+    "aigp",
+    "protocol",
+    "diagrams",
+    "json-schema"
+  ]
+}

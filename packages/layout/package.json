@@ -1,0 +1,58 @@
+{
+  "name": "@aigraphia/layout",
+  "version": "1.0.1",
+  "description": "Layout engines for AIGP diagrams",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "test": "vitest",
+    "lint": "eslint src/",
+    "clean": "rm -rf dist"
+  },
+  "dependencies": {
+    "@aigraphia/protocol": "workspace:*",
+    "d3-force": "^3.0.0",
+    "d3-hierarchy": "^3.1.2",
+    "dagre": "^0.8.5",
+    "elkjs": "^0.11.1"
+  },
+  "devDependencies": {
+    "@types/d3-force": "^3.0.10",
+    "@types/d3-hierarchy": "^3.1.7",
+    "@types/dagre": "^0.7.54",
+    "@types/node": "^25.5.0",
+    "typescript": "^5.9.3",
+    "vitest": "^4.1.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AIGraphia/aigp.git",
+    "directory": "packages/layout"
+  },
+  "bugs": {
+    "url": "https://github.com/AIGraphia/aigp/issues"
+  },
+  "homepage": "https://github.com/AIGraphia/aigp/tree/main/packages/layout",
+  "author": "AIGP Contributors",
+  "engines": {
+    "node": ">=18"
+  },
+  "license": "MIT",
+  "keywords": [
+    "aigp",
+    "layout",
+    "diagrams",
+    "auto-layout"
+  ]
+}

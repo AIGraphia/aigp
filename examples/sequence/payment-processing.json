@@ -1,0 +1,115 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "sequence",
+  "metadata": {
+    "title": "Payment Processing Flow",
+    "description": "Secure payment transaction sequence",
+    "author": "AIGP Examples",
+    "tags": [
+      "sequence",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "user",
+        "type": "actor",
+        "label": "User",
+        "data": {}
+      },
+      {
+        "id": "app",
+        "type": "actor",
+        "label": "Application",
+        "data": {}
+      },
+      {
+        "id": "payment_gateway",
+        "type": "actor",
+        "label": "Payment Gateway",
+        "data": {}
+      },
+      {
+        "id": "bank",
+        "type": "actor",
+        "label": "Bank",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "message",
+        "source": "user",
+        "target": "app",
+        "label": "Submit Payment",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 0
+        }
+      },
+      {
+        "id": "e1",
+        "type": "message",
+        "source": "app",
+        "target": "payment_gateway",
+        "label": "Process Payment",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 1
+        }
+      },
+      {
+        "id": "e2",
+        "type": "message",
+        "source": "payment_gateway",
+        "target": "bank",
+        "label": "Authorize Transaction",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 2
+        }
+      },
+      {
+        "id": "e3",
+        "type": "message",
+        "source": "bank",
+        "target": "payment_gateway",
+        "label": "Authorization Result",
+        "data": {
+          "messageType": "async",
+          "timestamp": 3
+        }
+      },
+      {
+        "id": "e4",
+        "type": "message",
+        "source": "payment_gateway",
+        "target": "app",
+        "label": "Payment Status",
+        "data": {
+          "messageType": "async",
+          "timestamp": 4
+        }
+      },
+      {
+        "id": "e5",
+        "type": "message",
+        "source": "app",
+        "target": "user",
+        "label": "Confirmation",
+        "data": {
+          "messageType": "async",
+          "timestamp": 5
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "timeline",
+    "direction": "LR"
+  }
+}

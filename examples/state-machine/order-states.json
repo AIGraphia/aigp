@@ -1,0 +1,153 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "state-machine",
+  "metadata": {
+    "title": "Order State Machine",
+    "description": "E-commerce order lifecycle states",
+    "author": "AIGP Examples",
+    "tags": [
+      "state-machine",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "initial",
+        "type": "initial",
+        "label": "Start",
+        "data": {}
+      },
+      {
+        "id": "pending",
+        "type": "state",
+        "label": "Pending Payment",
+        "data": {}
+      },
+      {
+        "id": "processing",
+        "type": "state",
+        "label": "Processing",
+        "data": {}
+      },
+      {
+        "id": "shipped",
+        "type": "state",
+        "label": "Shipped",
+        "data": {}
+      },
+      {
+        "id": "delivered",
+        "type": "state",
+        "label": "Delivered",
+        "data": {}
+      },
+      {
+        "id": "cancelled",
+        "type": "state",
+        "label": "Cancelled",
+        "data": {}
+      },
+      {
+        "id": "refunded",
+        "type": "state",
+        "label": "Refunded",
+        "data": {}
+      },
+      {
+        "id": "final",
+        "type": "final",
+        "label": "End",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "transition",
+        "source": "initial",
+        "target": "pending",
+        "label": "create",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "transition",
+        "source": "pending",
+        "target": "processing",
+        "label": "payment confirmed",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "transition",
+        "source": "pending",
+        "target": "cancelled",
+        "label": "timeout",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "transition",
+        "source": "processing",
+        "target": "shipped",
+        "label": "dispatched",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "transition",
+        "source": "processing",
+        "target": "cancelled",
+        "label": "cancel request",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "transition",
+        "source": "shipped",
+        "target": "delivered",
+        "label": "confirmed delivery",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "transition",
+        "source": "delivered",
+        "target": "refunded",
+        "label": "return approved",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "transition",
+        "source": "cancelled",
+        "target": "final",
+        "label": "close",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "transition",
+        "source": "delivered",
+        "target": "final",
+        "label": "complete",
+        "data": {}
+      },
+      {
+        "id": "e9",
+        "type": "transition",
+        "source": "refunded",
+        "target": "final",
+        "label": "close",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

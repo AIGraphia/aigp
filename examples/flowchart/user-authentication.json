@@ -1,0 +1,183 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "User Authentication Flow",
+    "description": "Complete user authentication process with OAuth and 2FA",
+    "author": "AIGP Examples",
+    "tags": ["auth", "security", "oauth", "2fa"]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "label": "User Access",
+        "data": {}
+      },
+      {
+        "id": "login",
+        "type": "process",
+        "label": "Login Page",
+        "data": {}
+      },
+      {
+        "id": "check_auth",
+        "type": "decision",
+        "label": "Authenticated?",
+        "data": {}
+      },
+      {
+        "id": "oauth",
+        "type": "process",
+        "label": "OAuth Provider",
+        "data": { "provider": "Google/GitHub" }
+      },
+      {
+        "id": "validate",
+        "type": "process",
+        "label": "Validate Credentials",
+        "data": {}
+      },
+      {
+        "id": "2fa_check",
+        "type": "decision",
+        "label": "2FA Enabled?",
+        "data": {}
+      },
+      {
+        "id": "2fa_prompt",
+        "type": "process",
+        "label": "2FA Verification",
+        "data": {}
+      },
+      {
+        "id": "create_session",
+        "type": "process",
+        "label": "Create Session",
+        "data": {}
+      },
+      {
+        "id": "dashboard",
+        "type": "process",
+        "label": "Dashboard",
+        "data": {}
+      },
+      {
+        "id": "error",
+        "type": "process",
+        "label": "Show Error",
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "label": "End",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "start",
+        "target": "login",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "login",
+        "target": "check_auth",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "check_auth",
+        "target": "oauth",
+        "label": "OAuth",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "check_auth",
+        "target": "validate",
+        "label": "Password",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "oauth",
+        "target": "validate",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "validate",
+        "target": "2fa_check",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "2fa_check",
+        "target": "2fa_prompt",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "flow",
+        "source": "2fa_check",
+        "target": "create_session",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e9",
+        "type": "flow",
+        "source": "2fa_prompt",
+        "target": "create_session",
+        "data": {}
+      },
+      {
+        "id": "e10",
+        "type": "flow",
+        "source": "create_session",
+        "target": "dashboard",
+        "data": {}
+      },
+      {
+        "id": "e11",
+        "type": "flow",
+        "source": "validate",
+        "target": "error",
+        "label": "Invalid",
+        "data": {}
+      },
+      {
+        "id": "e12",
+        "type": "flow",
+        "source": "error",
+        "target": "login",
+        "data": {}
+      },
+      {
+        "id": "e13",
+        "type": "flow",
+        "source": "dashboard",
+        "target": "end",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

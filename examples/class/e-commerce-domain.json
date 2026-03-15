@@ -1,0 +1,150 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "class",
+  "metadata": {
+    "title": "E-Commerce Domain Model",
+    "description": "Core domain entities for online shopping platform",
+    "author": "AIGP Examples",
+    "tags": [
+      "class",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "User",
+        "type": "class",
+        "label": "User",
+        "data": {
+          "attributes": [
+            "id: string",
+            "email: string",
+            "name: string"
+          ],
+          "methods": [
+            "login()",
+            "logout()"
+          ]
+        }
+      },
+      {
+        "id": "Order",
+        "type": "class",
+        "label": "Order",
+        "data": {
+          "attributes": [
+            "id: string",
+            "total: number",
+            "status: string"
+          ],
+          "methods": [
+            "calculate()",
+            "submit()"
+          ]
+        }
+      },
+      {
+        "id": "Product",
+        "type": "class",
+        "label": "Product",
+        "data": {
+          "attributes": [
+            "id: string",
+            "name: string",
+            "price: number"
+          ],
+          "methods": [
+            "updatePrice()"
+          ]
+        }
+      },
+      {
+        "id": "Cart",
+        "type": "class",
+        "label": "Cart",
+        "data": {
+          "attributes": [
+            "items: CartItem[]"
+          ],
+          "methods": [
+            "addItem()",
+            "removeItem()"
+          ]
+        }
+      },
+      {
+        "id": "Payment",
+        "type": "class",
+        "label": "Payment",
+        "data": {
+          "attributes": [
+            "amount: number",
+            "method: string"
+          ],
+          "methods": [
+            "process()"
+          ]
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "association",
+        "source": "User",
+        "target": "Order",
+        "label": "places",
+        "data": {
+          "cardinality": "1..*"
+        }
+      },
+      {
+        "id": "e1",
+        "type": "association",
+        "source": "User",
+        "target": "Cart",
+        "label": "has",
+        "data": {
+          "cardinality": "1"
+        }
+      },
+      {
+        "id": "e2",
+        "type": "association",
+        "source": "Order",
+        "target": "Product",
+        "label": "contains",
+        "data": {
+          "cardinality": "*"
+        }
+      },
+      {
+        "id": "e3",
+        "type": "composition",
+        "source": "Order",
+        "target": "Payment",
+        "label": "includes",
+        "data": {
+          "cardinality": "1"
+        }
+      },
+      {
+        "id": "e4",
+        "type": "association",
+        "source": "Cart",
+        "target": "Product",
+        "label": "holds",
+        "data": {
+          "cardinality": "*"
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

@@ -1,0 +1,148 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "sequence",
+  "metadata": {
+    "title": "OAuth 2.0 Authorization Flow",
+    "description": "OAuth authentication sequence",
+    "author": "AIGP Examples",
+    "tags": [
+      "sequence",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "user",
+        "type": "actor",
+        "label": "User",
+        "data": {}
+      },
+      {
+        "id": "client",
+        "type": "actor",
+        "label": "Client App",
+        "data": {}
+      },
+      {
+        "id": "auth_server",
+        "type": "actor",
+        "label": "Auth Server",
+        "data": {}
+      },
+      {
+        "id": "resource_server",
+        "type": "actor",
+        "label": "Resource Server",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "message",
+        "source": "user",
+        "target": "client",
+        "label": "Request Access",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 0
+        }
+      },
+      {
+        "id": "e1",
+        "type": "message",
+        "source": "client",
+        "target": "auth_server",
+        "label": "Authorization Request",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 1
+        }
+      },
+      {
+        "id": "e2",
+        "type": "message",
+        "source": "auth_server",
+        "target": "user",
+        "label": "Login Prompt",
+        "data": {
+          "messageType": "async",
+          "timestamp": 2
+        }
+      },
+      {
+        "id": "e3",
+        "type": "message",
+        "source": "user",
+        "target": "auth_server",
+        "label": "Credentials",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 3
+        }
+      },
+      {
+        "id": "e4",
+        "type": "message",
+        "source": "auth_server",
+        "target": "client",
+        "label": "Authorization Code",
+        "data": {
+          "messageType": "async",
+          "timestamp": 4
+        }
+      },
+      {
+        "id": "e5",
+        "type": "message",
+        "source": "client",
+        "target": "auth_server",
+        "label": "Exchange Code",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 5
+        }
+      },
+      {
+        "id": "e6",
+        "type": "message",
+        "source": "auth_server",
+        "target": "client",
+        "label": "Access Token",
+        "data": {
+          "messageType": "async",
+          "timestamp": 6
+        }
+      },
+      {
+        "id": "e7",
+        "type": "message",
+        "source": "client",
+        "target": "resource_server",
+        "label": "API Request + Token",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 7
+        }
+      },
+      {
+        "id": "e8",
+        "type": "message",
+        "source": "resource_server",
+        "target": "client",
+        "label": "Protected Resource",
+        "data": {
+          "messageType": "async",
+          "timestamp": 8
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "timeline",
+    "direction": "LR"
+  }
+}

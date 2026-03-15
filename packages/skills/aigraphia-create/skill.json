@@ -1,0 +1,12 @@
+{
+  "name": "aigraphia-create",
+  "description": "Generate diagrams from natural language descriptions",
+  "version": "1.0.0",
+  "triggers": [
+    "explanation exceeds 10 sentences",
+    "user says 'show me', 'explain', 'how does X work'",
+    "complex relationships described",
+    "user requests a diagram"
+  ],
+  "platforms": ["claude", "chatgpt", "cursor", "generic"]
+}

@@ -1,0 +1,108 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "timeline",
+  "metadata": {
+    "title": "Project Development Timeline",
+    "description": "Software project milestone timeline",
+    "author": "AIGP Examples",
+    "tags": [
+      "timeline",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "kickoff",
+        "type": "event",
+        "label": "Project Kickoff",
+        "data": {
+          "date": "2026-01-01"
+        }
+      },
+      {
+        "id": "requirements",
+        "type": "event",
+        "label": "Requirements Complete",
+        "data": {
+          "date": "2026-02-01"
+        }
+      },
+      {
+        "id": "design",
+        "type": "event",
+        "label": "Design Approved",
+        "data": {
+          "date": "2026-03-01"
+        }
+      },
+      {
+        "id": "mvp",
+        "type": "event",
+        "label": "MVP Release",
+        "data": {
+          "date": "2026-05-01"
+        }
+      },
+      {
+        "id": "beta",
+        "type": "event",
+        "label": "Beta Launch",
+        "data": {
+          "date": "2026-07-01"
+        }
+      },
+      {
+        "id": "launch",
+        "type": "event",
+        "label": "Public Launch",
+        "data": {
+          "date": "2026-09-01"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "kickoff",
+        "target": "requirements",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "requirements",
+        "target": "design",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "design",
+        "target": "mvp",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "mvp",
+        "target": "beta",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "beta",
+        "target": "launch",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

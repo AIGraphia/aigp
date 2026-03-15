@@ -1,0 +1,118 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "Data Processing Pipeline",
+    "description": "ETL data processing workflow",
+    "author": "AIGP Examples",
+    "tags": [
+      "flowchart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "source",
+        "type": "start",
+        "label": "Data Source",
+        "data": {}
+      },
+      {
+        "id": "extract",
+        "type": "process",
+        "label": "Extract Data",
+        "data": {}
+      },
+      {
+        "id": "validate",
+        "type": "decision",
+        "label": "Valid?",
+        "data": {}
+      },
+      {
+        "id": "transform",
+        "type": "process",
+        "label": "Transform",
+        "data": {}
+      },
+      {
+        "id": "load",
+        "type": "process",
+        "label": "Load to DW",
+        "data": {}
+      },
+      {
+        "id": "error_queue",
+        "type": "process",
+        "label": "Error Queue",
+        "data": {}
+      },
+      {
+        "id": "complete",
+        "type": "end",
+        "label": "Complete",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "source",
+        "target": "extract",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "extract",
+        "target": "validate",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "validate",
+        "target": "transform",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "validate",
+        "target": "error_queue",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "transform",
+        "target": "load",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "load",
+        "target": "complete",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "error_queue",
+        "target": "complete",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "bpmn",
+  "metadata": {
+    "title": "Expense Approval Process",
+    "description": "Employee expense claim approval workflow",
+    "author": "AIGP Examples",
+    "tags": [
+      "bpmn",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "start",
+        "type": "start",
+        "label": "Submit Expense",
+        "data": {}
+      },
+      {
+        "id": "review",
+        "type": "task",
+        "label": "Manager Review",
+        "data": {}
+      },
+      {
+        "id": "amount",
+        "type": "gateway",
+        "label": "Amount > $500?",
+        "data": {}
+      },
+      {
+        "id": "finance",
+        "type": "task",
+        "label": "Finance Review",
+        "data": {}
+      },
+      {
+        "id": "approve",
+        "type": "task",
+        "label": "Approve",
+        "data": {}
+      },
+      {
+        "id": "reject",
+        "type": "task",
+        "label": "Reject",
+        "data": {}
+      },
+      {
+        "id": "reimburse",
+        "type": "task",
+        "label": "Process Reimbursement",
+        "data": {}
+      },
+      {
+        "id": "notify",
+        "type": "task",
+        "label": "Notify Employee",
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "label": "Complete",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "sequence",
+        "source": "start",
+        "target": "review",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "sequence",
+        "source": "review",
+        "target": "amount",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "sequence",
+        "source": "amount",
+        "target": "finance",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "sequence",
+        "source": "amount",
+        "target": "approve",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "sequence",
+        "source": "finance",
+        "target": "approve",
+        "label": "Approved",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "sequence",
+        "source": "finance",
+        "target": "reject",
+        "label": "Rejected",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "sequence",
+        "source": "approve",
+        "target": "reimburse",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "sequence",
+        "source": "reimburse",
+        "target": "notify",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "sequence",
+        "source": "reject",
+        "target": "notify",
+        "data": {}
+      },
+      {
+        "id": "e9",
+        "type": "sequence",
+        "source": "notify",
+        "target": "end",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

@@ -1,0 +1,153 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "architecture",
+  "metadata": {
+    "title": "Three-Tier Web Application",
+    "description": "Traditional web application architecture",
+    "author": "AIGP Examples",
+    "tags": [
+      "architecture",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "browser",
+        "type": "component",
+        "label": "Browser",
+        "data": {
+          "layer": "Presentation"
+        }
+      },
+      {
+        "id": "load_balancer",
+        "type": "component",
+        "label": "Load Balancer",
+        "data": {
+          "layer": "Presentation"
+        }
+      },
+      {
+        "id": "web_server_1",
+        "type": "component",
+        "label": "Web Server 1",
+        "data": {
+          "layer": "Application"
+        }
+      },
+      {
+        "id": "web_server_2",
+        "type": "component",
+        "label": "Web Server 2",
+        "data": {
+          "layer": "Application"
+        }
+      },
+      {
+        "id": "app_server_1",
+        "type": "component",
+        "label": "App Server 1",
+        "data": {
+          "layer": "Application"
+        }
+      },
+      {
+        "id": "app_server_2",
+        "type": "component",
+        "label": "App Server 2",
+        "data": {
+          "layer": "Application"
+        }
+      },
+      {
+        "id": "db_primary",
+        "type": "component",
+        "label": "DB Primary",
+        "data": {
+          "layer": "Data"
+        }
+      },
+      {
+        "id": "db_replica",
+        "type": "component",
+        "label": "DB Replica",
+        "data": {
+          "layer": "Data"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "browser",
+        "target": "load_balancer",
+        "label": "HTTPS",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "load_balancer",
+        "target": "web_server_1",
+        "label": "HTTP",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "load_balancer",
+        "target": "web_server_2",
+        "label": "HTTP",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "web_server_1",
+        "target": "app_server_1",
+        "label": "RPC",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "web_server_2",
+        "target": "app_server_2",
+        "label": "RPC",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "app_server_1",
+        "target": "db_primary",
+        "label": "SQL",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "app_server_2",
+        "target": "db_primary",
+        "label": "SQL",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "db_primary",
+        "target": "db_replica",
+        "label": "Replication",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

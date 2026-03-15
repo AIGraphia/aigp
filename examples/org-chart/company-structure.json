@@ -1,0 +1,123 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "org-chart",
+  "metadata": {
+    "title": "Company Organization Chart",
+    "description": "Corporate hierarchy structure",
+    "author": "AIGP Examples",
+    "tags": [
+      "org-chart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "ceo",
+        "type": "position",
+        "label": "CEO",
+        "data": {
+          "name": "Alice Johnson"
+        }
+      },
+      {
+        "id": "cto",
+        "type": "position",
+        "label": "CTO",
+        "data": {
+          "name": "Bob Smith"
+        }
+      },
+      {
+        "id": "cfo",
+        "type": "position",
+        "label": "CFO",
+        "data": {
+          "name": "Carol White"
+        }
+      },
+      {
+        "id": "vp_eng",
+        "type": "position",
+        "label": "VP Engineering",
+        "data": {
+          "name": "David Brown"
+        }
+      },
+      {
+        "id": "vp_prod",
+        "type": "position",
+        "label": "VP Product",
+        "data": {
+          "name": "Eve Davis"
+        }
+      },
+      {
+        "id": "eng_lead",
+        "type": "position",
+        "label": "Engineering Lead",
+        "data": {
+          "name": "Frank Miller"
+        }
+      },
+      {
+        "id": "pm_lead",
+        "type": "position",
+        "label": "Product Lead",
+        "data": {
+          "name": "Grace Lee"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "reports-to",
+        "source": "ceo",
+        "target": "cto",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "reports-to",
+        "source": "ceo",
+        "target": "cfo",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "reports-to",
+        "source": "cto",
+        "target": "vp_eng",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "reports-to",
+        "source": "cto",
+        "target": "vp_prod",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "reports-to",
+        "source": "vp_eng",
+        "target": "eng_lead",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "reports-to",
+        "source": "vp_prod",
+        "target": "pm_lead",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

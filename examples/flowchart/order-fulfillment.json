@@ -1,0 +1,144 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "Order Fulfillment Process",
+    "description": "E-commerce order processing workflow",
+    "author": "AIGP Examples",
+    "tags": [
+      "flowchart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "order",
+        "type": "start",
+        "label": "New Order",
+        "data": {}
+      },
+      {
+        "id": "inventory",
+        "type": "decision",
+        "label": "In Stock?",
+        "data": {}
+      },
+      {
+        "id": "payment",
+        "type": "process",
+        "label": "Process Payment",
+        "data": {}
+      },
+      {
+        "id": "pick",
+        "type": "process",
+        "label": "Pick Items",
+        "data": {}
+      },
+      {
+        "id": "pack",
+        "type": "process",
+        "label": "Pack Order",
+        "data": {}
+      },
+      {
+        "id": "ship",
+        "type": "process",
+        "label": "Ship",
+        "data": {}
+      },
+      {
+        "id": "backorder",
+        "type": "process",
+        "label": "Create Backorder",
+        "data": {}
+      },
+      {
+        "id": "notify",
+        "type": "process",
+        "label": "Notify Customer",
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "label": "Complete",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "order",
+        "target": "inventory",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "inventory",
+        "target": "payment",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "inventory",
+        "target": "backorder",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "payment",
+        "target": "pick",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "pick",
+        "target": "pack",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "pack",
+        "target": "ship",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "ship",
+        "target": "notify",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "backorder",
+        "target": "notify",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "flow",
+        "source": "notify",
+        "target": "end",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

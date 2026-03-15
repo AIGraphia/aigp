@@ -1,0 +1,170 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "Machine Learning Training Pipeline",
+    "description": "ML model training and deployment workflow",
+    "author": "AIGP Examples",
+    "tags": [
+      "flowchart",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "data",
+        "type": "start",
+        "label": "Raw Data",
+        "data": {}
+      },
+      {
+        "id": "preprocess",
+        "type": "process",
+        "label": "Preprocessing",
+        "data": {}
+      },
+      {
+        "id": "split",
+        "type": "process",
+        "label": "Train/Test Split",
+        "data": {}
+      },
+      {
+        "id": "train",
+        "type": "process",
+        "label": "Train Model",
+        "data": {}
+      },
+      {
+        "id": "evaluate",
+        "type": "process",
+        "label": "Evaluate",
+        "data": {}
+      },
+      {
+        "id": "meets_threshold",
+        "type": "decision",
+        "label": "Meets Target?",
+        "data": {}
+      },
+      {
+        "id": "tune",
+        "type": "process",
+        "label": "Hyperparameter Tuning",
+        "data": {}
+      },
+      {
+        "id": "validate",
+        "type": "process",
+        "label": "Validation",
+        "data": {}
+      },
+      {
+        "id": "deploy",
+        "type": "process",
+        "label": "Deploy Model",
+        "data": {}
+      },
+      {
+        "id": "monitor",
+        "type": "process",
+        "label": "Monitor Performance",
+        "data": {}
+      },
+      {
+        "id": "end",
+        "type": "end",
+        "label": "Complete",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "data",
+        "target": "preprocess",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "preprocess",
+        "target": "split",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "split",
+        "target": "train",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "train",
+        "target": "evaluate",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "evaluate",
+        "target": "meets_threshold",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "meets_threshold",
+        "target": "validate",
+        "label": "Yes",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "meets_threshold",
+        "target": "tune",
+        "label": "No",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "tune",
+        "target": "train",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "flow",
+        "source": "validate",
+        "target": "deploy",
+        "data": {}
+      },
+      {
+        "id": "e9",
+        "type": "flow",
+        "source": "deploy",
+        "target": "monitor",
+        "data": {}
+      },
+      {
+        "id": "e10",
+        "type": "flow",
+        "source": "monitor",
+        "target": "end",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

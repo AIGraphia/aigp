@@ -1,0 +1,43 @@
+{
+  "name": "aigp",
+  "version": "1.0.0",
+  "description": "AI Graphic Protocol - Universal JSON Standard for AI-Native Diagrams",
+  "private": true,
+  "packageManager": "pnpm@10.30.3",
+  "scripts": {
+    "build": "turbo run build",
+    "test": "turbo run test",
+    "lint": "turbo run lint",
+    "clean": "turbo run clean",
+    "format": "prettier --write .",
+    "format:check": "prettier --check ."
+  },
+  "devDependencies": {
+    "eslint": "^9.0.0",
+    "turbo": "^2.8.17",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.0.0",
+    "prettier": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AIGraphia/aigp.git"
+  },
+  "keywords": [
+    "aigp",
+    "diagrams",
+    "ai",
+    "json",
+    "protocol",
+    "visualization"
+  ],
+  "homepage": "https://github.com/AIGraphia/aigp",
+  "bugs": {
+    "url": "https://github.com/AIGraphia/aigp/issues"
+  },
+  "author": "AIGP Contributors",
+  "license": "MIT"
+}

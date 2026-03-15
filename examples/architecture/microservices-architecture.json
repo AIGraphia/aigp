@@ -1,0 +1,169 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "architecture",
+  "metadata": {
+    "title": "Microservices System Architecture",
+    "description": "Cloud-native microservices deployment",
+    "author": "AIGP Examples",
+    "tags": [
+      "architecture",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "client",
+        "type": "component",
+        "label": "Web Client",
+        "data": {
+          "technology": "React"
+        }
+      },
+      {
+        "id": "cdn",
+        "type": "component",
+        "label": "CDN",
+        "data": {
+          "technology": "CloudFlare"
+        }
+      },
+      {
+        "id": "api_gateway",
+        "type": "component",
+        "label": "API Gateway",
+        "data": {
+          "technology": "Kong"
+        }
+      },
+      {
+        "id": "auth_service",
+        "type": "component",
+        "label": "Auth Service",
+        "data": {
+          "technology": "Node.js"
+        }
+      },
+      {
+        "id": "user_service",
+        "type": "component",
+        "label": "User Service",
+        "data": {
+          "technology": "Go"
+        }
+      },
+      {
+        "id": "order_service",
+        "type": "component",
+        "label": "Order Service",
+        "data": {
+          "technology": "Java"
+        }
+      },
+      {
+        "id": "postgres",
+        "type": "component",
+        "label": "PostgreSQL",
+        "data": {
+          "technology": "Database"
+        }
+      },
+      {
+        "id": "redis",
+        "type": "component",
+        "label": "Redis Cache",
+        "data": {
+          "technology": "Cache"
+        }
+      },
+      {
+        "id": "kafka",
+        "type": "component",
+        "label": "Kafka",
+        "data": {
+          "technology": "Message Queue"
+        }
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "flow",
+        "source": "client",
+        "target": "cdn",
+        "label": "HTTPS",
+        "data": {}
+      },
+      {
+        "id": "e1",
+        "type": "flow",
+        "source": "cdn",
+        "target": "api_gateway",
+        "label": "REST",
+        "data": {}
+      },
+      {
+        "id": "e2",
+        "type": "flow",
+        "source": "api_gateway",
+        "target": "auth_service",
+        "label": "gRPC",
+        "data": {}
+      },
+      {
+        "id": "e3",
+        "type": "flow",
+        "source": "api_gateway",
+        "target": "user_service",
+        "label": "gRPC",
+        "data": {}
+      },
+      {
+        "id": "e4",
+        "type": "flow",
+        "source": "api_gateway",
+        "target": "order_service",
+        "label": "gRPC",
+        "data": {}
+      },
+      {
+        "id": "e5",
+        "type": "flow",
+        "source": "auth_service",
+        "target": "redis",
+        "label": "Sessions",
+        "data": {}
+      },
+      {
+        "id": "e6",
+        "type": "flow",
+        "source": "user_service",
+        "target": "postgres",
+        "label": "SQL",
+        "data": {}
+      },
+      {
+        "id": "e7",
+        "type": "flow",
+        "source": "order_service",
+        "target": "postgres",
+        "label": "SQL",
+        "data": {}
+      },
+      {
+        "id": "e8",
+        "type": "flow",
+        "source": "order_service",
+        "target": "kafka",
+        "label": "Events",
+        "data": {}
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "hierarchical",
+    "direction": "TB"
+  }
+}

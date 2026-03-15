@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIGP - AI Graphic Protocol</title>
+    <meta name="description" content="Universal JSON standard for AI-native diagrams">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>AIGP</h1>
+                <span class="tagline">AI Graphic Protocol</span>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#quickstart">Quick Start</a></li>
+                <li><a href="#examples">Examples</a></li>
+                <li><a href="#docs">Documentation</a></li>
+                <li><a href="https://github.com/aigp/aigp" target="_blank">GitHub</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>Universal JSON Standard for AI-Native Diagrams</h1>
+            <p class="subtitle">A protocol designed for seamless diagram communication between humans, AI agents, and tools</p>
+            <div class="hero-actions">
+                <a href="#quickstart" class="btn btn-primary">Get Started</a>
+                <a href="https://github.com/aigp/aigp" class="btn btn-secondary">View on GitHub</a>
+            </div>
+            <div class="hero-code">
+                <pre><code>npm install @aigraphia/protocol @aigraphia/plugins</code></pre>
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="container">
+            <h2>Why AIGP?</h2>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📊</div>
+                    <h3>29 Diagram Types</h3>
+                    <p>From flowcharts to Sankey diagrams, state machines to architecture diagrams</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🤖</div>
+                    <h3>AI-First Design</h3>
+                    <p>Optimized for natural language generation and editing by AI agents</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Type-Safe</h3>
+                    <p>Zod-based runtime validation ensures data integrity</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🔄</div>
+                    <h3>Universal Compatibility</h3>
+                    <p>Import from Mermaid, export to multiple formats</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Auto-Layout</h3>
+                    <p>7 layout engines: Dagre, ELK, D3, Timeline, Radial, Grid, Manual</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🧩</div>
+                    <h3>Plugin Architecture</h3>
+                    <p>Extensible system for custom diagram types</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="quickstart" class="quickstart">
+        <div class="container">
+            <h2>Quick Start</h2>
+            <div class="quickstart-content">
+                <div class="quickstart-step">
+                    <h3>1. Install</h3>
+                    <pre><code>npm install @aigraphia/protocol @aigraphia/plugins @aigraphia/cli</code></pre>
+                </div>
+                <div class="quickstart-step">
+                    <h3>2. Create a Diagram</h3>
+                    <pre><code>{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "flowchart",
+  "metadata": {
+    "title": "My First Diagram"
+  },
+  "graph": {
+    "nodes": [
+      { "id": "start", "type": "start", "label": "Begin" },
+      { "id": "end", "type": "end", "label": "End" }
+    ],
+    "edges": [
+      { "id": "e1", "source": "start", "target": "end" }
+    ]
+  }
+}</code></pre>
+                </div>
+                <div class="quickstart-step">
+                    <h3>3. Validate & Convert</h3>
+                    <pre><code>aigp validate diagram.json
+aigp convert diagram.json mermaid</code></pre>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="examples" class="examples">
+        <div class="container">
+            <h2>Example Gallery</h2>
+            <p class="section-subtitle">52+ production-ready diagrams across 14 types</p>
+            <div class="examples-grid">
+                <div class="example-card">
+                    <h4>Flowcharts</h4>
+                    <p>13 examples: CI/CD pipelines, error handling, ML training, order fulfillment</p>
+                    <a href="../examples/README.md#flowcharts-13-examples">View Examples →</a>
+                </div>
+                <div class="example-card">
+                    <h4>Sequence Diagrams</h4>
+                    <p>6 examples: OAuth flow, API requests, payment processing, WebSocket</p>
+                    <a href="../examples/README.md#sequence-diagrams-6-examples">View Examples →</a>
+                </div>
+                <div class="example-card">
+                    <h4>Class Diagrams</h4>
+                    <p>5 examples: E-commerce domain, blog system, game engine, auth system</p>
+                    <a href="../examples/README.md#class-diagrams-5-examples">View Examples →</a>
+                </div>
+                <div class="example-card">
+                    <h4>Architecture</h4>
+                    <p>4 examples: Microservices, serverless, event-driven, three-tier</p>
+                    <a href="../examples/README.md#architecture-diagrams-4-examples">View Examples →</a>
+                </div>
+                <div class="example-card">
+                    <h4>ER Diagrams</h4>
+                    <p>4 examples: Social network, library, hospital, hotel booking systems</p>
+                    <a href="../examples/README.md#entity-relationship-diagrams-4-examples">View Examples →</a>
+                </div>
+                <div class="example-card">
+                    <h4>And 9 More Types</h4>
+                    <p>State machines, BPMN, Kanban, Sankey, mind maps, org charts, timelines...</p>
+                    <a href="../examples/README.md">View All Examples →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="docs" class="documentation">
+        <div class="container">
+            <h2>Documentation</h2>
+            <div class="docs-grid">
+                <div class="doc-card">
+                    <h3>📘 Protocol Specification</h3>
+                    <p>Complete reference for the AIGP JSON format</p>
+                    <a href="../PROTOCOL.md">Read Specification →</a>
+                </div>
+                <div class="doc-card">
+                    <h3>🚀 Quick Start Guide</h3>
+                    <p>Get up and running in 5 minutes</p>
+                    <a href="../QUICKSTART.md">Get Started →</a>
+                </div>
+                <div class="doc-card">
+                    <h3>🗺️ Roadmap</h3>
+                    <p>Future plans and development timeline</p>
+                    <a href="../ROADMAP.md">View Roadmap →</a>
+                </div>
+                <div class="doc-card">
+                    <h3>🤝 Contributing</h3>
+                    <p>How to contribute to AIGP</p>
+                    <a href="../../CONTRIBUTING.md">Contribute →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="use-cases">
+        <div class="container">
+            <h2>Use Cases</h2>
+            <ul class="use-case-list">
+                <li><strong>AI Agent Communication</strong> - Standard format for Claude, ChatGPT, and other LLMs to create and edit diagrams</li>
+                <li><strong>Documentation Generation</strong> - Automatically generate architecture diagrams from code or specs</li>
+                <li><strong>Visual Programming</strong> - Build visual editors with a universal backend format</li>
+                <li><strong>Workflow Automation</strong> - Define and execute workflows in a machine-readable format</li>
+                <li><strong>Data Visualization</strong> - Create complex data flow and relationship visualizations</li>
+                <li><strong>Knowledge Management</strong> - Structured representation of knowledge graphs and mind maps</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="cta">
+        <div class="container">
+            <h2>Ready to Get Started?</h2>
+            <p>Join the community building the future of AI-native diagram communication</p>
+            <div class="cta-actions">
+                <a href="https://github.com/aigp/aigp" class="btn btn-primary">Star on GitHub</a>
+                <a href="../../CONTRIBUTING.md" class="btn btn-secondary">Contribute</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>AIGP</h4>
+                    <p>Universal JSON standard for AI-native diagrams</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="../PROTOCOL.md">Protocol Spec</a></li>
+                        <li><a href="../examples/README.md">Examples</a></li>
+                        <li><a href="../QUICKSTART.md">Quick Start</a></li>
+                        <li><a href="../ROADMAP.md">Roadmap</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Community</h4>
+                    <ul>
+                        <li><a href="https://github.com/aigp/aigp">GitHub</a></li>
+                        <li><a href="https://github.com/aigp/aigp/issues">Issues</a></li>
+                        <li><a href="../../CONTRIBUTING.md">Contributing</a></li>
+                        <li><a href="../CODE_OF_CONDUCT.md">Code of Conduct</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Packages</h4>
+                    <ul>
+                        <li><a href="https://npmjs.com/package/@aigraphia/protocol">@aigraphia/protocol</a></li>
+                        <li><a href="https://npmjs.com/package/@aigraphia/plugins">@aigraphia/plugins</a></li>
+                        <li><a href="https://npmjs.com/package/@aigraphia/cli">@aigraphia/cli</a></li>
+                        <li><a href="https://npmjs.com/package/@aigraphia/converters">@aigraphia/converters</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 AIGP Contributors. Licensed under MIT.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

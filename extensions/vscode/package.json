@@ -1,0 +1,103 @@
+{
+  "name": "aigp-vscode",
+  "displayName": "AIGP - AI Graphic Protocol",
+  "description": "Create, edit, and preview AIGP diagrams in VS Code",
+  "version": "0.1.0",
+  "publisher": "aigp",
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Visualization",
+    "Data Science",
+    "Other"
+  ],
+  "keywords": [
+    "diagrams",
+    "flowchart",
+    "sequence",
+    "architecture",
+    "visualization",
+    "aigp",
+    "ai"
+  ],
+  "activationEvents": [
+    "onLanguage:json"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "aigp.preview",
+        "title": "AIGP: Preview Diagram",
+        "icon": "$(open-preview)"
+      },
+      {
+        "command": "aigp.validate",
+        "title": "AIGP: Validate Document"
+      },
+      {
+        "command": "aigp.convertToMermaid",
+        "title": "AIGP: Convert to Mermaid"
+      },
+      {
+        "command": "aigp.newDiagram",
+        "title": "AIGP: New Diagram"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "when": "resourceExtname == .json",
+          "command": "aigp.preview",
+          "group": "navigation"
+        }
+      ]
+    },
+    "languages": [
+      {
+        "id": "aigp",
+        "aliases": ["AIGP", "aigp"],
+        "extensions": [".json"],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "configuration": {
+      "title": "AIGP",
+      "properties": {
+        "aigp.preview.theme": {
+          "type": "string",
+          "default": "default",
+          "enum": ["default", "dark", "neutral"],
+          "description": "Theme for diagram preview"
+        },
+        "aigp.validation.onSave": {
+          "type": "boolean",
+          "default": true,
+          "description": "Validate AIGP documents on save"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/node": "^18.0.0",
+    "@types/vscode": "^1.80.0",
+    "@vscode/vsce": "^2.20.0",
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "@aigraphia/protocol": "^1.0.0",
+    "@aigraphia/converters": "^1.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AIGraphia/aigp.git"
+  },
+  "license": "MIT"
+}

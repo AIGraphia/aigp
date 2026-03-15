@@ -1,0 +1,143 @@
+{
+  "schema": "https://aigraphia.com/schema/v1",
+  "version": "1.0.0",
+  "type": "sequence",
+  "metadata": {
+    "title": "Distributed Transaction Saga",
+    "description": "Microservices saga pattern for distributed transactions",
+    "author": "AIGP Examples",
+    "tags": [
+      "sequence",
+      "example",
+      "tutorial"
+    ]
+  },
+  "graph": {
+    "nodes": [
+      {
+        "id": "api",
+        "type": "actor",
+        "label": "API Gateway",
+        "data": {}
+      },
+      {
+        "id": "order",
+        "type": "actor",
+        "label": "Order Service",
+        "data": {}
+      },
+      {
+        "id": "payment",
+        "type": "actor",
+        "label": "Payment Service",
+        "data": {}
+      },
+      {
+        "id": "inventory",
+        "type": "actor",
+        "label": "Inventory Service",
+        "data": {}
+      },
+      {
+        "id": "shipping",
+        "type": "actor",
+        "label": "Shipping Service",
+        "data": {}
+      }
+    ],
+    "edges": [
+      {
+        "id": "e0",
+        "type": "message",
+        "source": "api",
+        "target": "order",
+        "label": "Create Order",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 0
+        }
+      },
+      {
+        "id": "e1",
+        "type": "message",
+        "source": "order",
+        "target": "payment",
+        "label": "Reserve Payment",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 1
+        }
+      },
+      {
+        "id": "e2",
+        "type": "message",
+        "source": "payment",
+        "target": "order",
+        "label": "Reserved",
+        "data": {
+          "messageType": "async",
+          "timestamp": 2
+        }
+      },
+      {
+        "id": "e3",
+        "type": "message",
+        "source": "order",
+        "target": "inventory",
+        "label": "Reserve Items",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 3
+        }
+      },
+      {
+        "id": "e4",
+        "type": "message",
+        "source": "inventory",
+        "target": "order",
+        "label": "Reserved",
+        "data": {
+          "messageType": "async",
+          "timestamp": 4
+        }
+      },
+      {
+        "id": "e5",
+        "type": "message",
+        "source": "order",
+        "target": "shipping",
+        "label": "Schedule Shipment",
+        "data": {
+          "messageType": "sync",
+          "timestamp": 5
+        }
+      },
+      {
+        "id": "e6",
+        "type": "message",
+        "source": "shipping",
+        "target": "order",
+        "label": "Scheduled",
+        "data": {
+          "messageType": "async",
+          "timestamp": 6
+        }
+      },
+      {
+        "id": "e7",
+        "type": "message",
+        "source": "order",
+        "target": "api",
+        "label": "Order Confirmed",
+        "data": {
+          "messageType": "async",
+          "timestamp": 7
+        }
+      }
+    ]
+  },
+  "layout": {
+    "algorithm": "timeline",
+    "direction": "LR"
+  }
+}
