@@ -408,9 +408,9 @@ jobs:
 
 ## Community
 
-- GitHub: https://github.com/aigp/aigp
+- GitHub: https://github.com/AIGraphia/aigp
 - Discord: [Coming Soon]
-- Issues: https://github.com/aigp/aigp/issues
+- Issues: https://github.com/AIGraphia/aigp/issues
 
 ---
 

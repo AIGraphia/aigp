@@ -89,6 +89,6 @@ MIT License - see [LICENSE](../../LICENSE) for details.
 
 ## Links
 
-- [AIGP Repository](https://github.com/aigp/aigp)
+- [AIGP Repository](https://github.com/AIGraphia/aigp)
 - [Documentation](https://aigp.dev)
 - [Examples](../../examples/README.md)

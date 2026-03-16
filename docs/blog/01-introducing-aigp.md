@@ -268,7 +268,7 @@ aigp convert my-diagram.json --to mermaid
 ```
 
 **Documentation**: https://aigp.dev/docs
-**GitHub**: https://github.com/aigp/aigp
+**GitHub**: https://github.com/AIGraphia/aigp
 **Discord**: https://discord.gg/aigp
 **npm**: https://npmjs.com/org/aigp
 
@@ -295,7 +295,7 @@ We welcome contributions! Whether it's:
 - 📚 Documentation
 - 🎨 Examples and tutorials
 
-Check out our [Contributing Guide](https://github.com/aigp/aigp/blob/main/CONTRIBUTING.md).
+Check out our [Contributing Guide](https://github.com/AIGraphia/aigp/blob/main/CONTRIBUTING.md).
 
 ## Built With AIGP
 

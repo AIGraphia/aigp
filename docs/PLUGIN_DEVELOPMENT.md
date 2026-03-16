@@ -1161,13 +1161,13 @@ class TimelineExporter implements CustomExporter {
 - **Plugin Registry**: https://aigp.dev/plugins
 - **Plugin Template**: https://github.com/aigp/plugin-template
 - **Development Guide**: https://aigp.dev/docs/plugin-development
-- **Community Forum**: https://github.com/aigp/aigp/discussions
+- **Community Forum**: https://github.com/AIGraphia/aigp/discussions
 - **Example Plugins**: https://github.com/aigp/plugins
 
 ---
 
 ## Support
 
-- GitHub Issues: https://github.com/aigp/aigp/issues
+- GitHub Issues: https://github.com/AIGraphia/aigp/issues
 - Discord: https://discord.gg/aigp
 - Email: plugins@aigp.dev

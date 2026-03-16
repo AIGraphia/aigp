@@ -10,7 +10,7 @@ Complete SDK implementations for AIGP across popular programming languages.
 
 ### Installation
 ```bash
-go get github.com/aigp/aigp-go
+go get github.com/AIGraphia/aigp-go
 ```
 
 ### Quick Start
@@ -18,7 +18,7 @@ go get github.com/aigp/aigp-go
 package main
 
 import (
-    "github.com/aigp/aigp-go"
+    "github.com/AIGraphia/aigp-go"
     "fmt"
 )
 

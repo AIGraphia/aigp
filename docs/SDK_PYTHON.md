@@ -458,7 +458,7 @@ class ValidationResult:
 ## Installation from Source
 
 ```bash
-git clone https://github.com/aigp/aigp-python.git
+git clone https://github.com/AIGraphia/aigp-python.git
 cd aigp-python
 pip install -e .
 ```
@@ -471,8 +471,8 @@ pytest tests/
 
 ## Contributing
 
-See [CONTRIBUTING.md](https://github.com/aigp/aigp-python/blob/main/CONTRIBUTING.md)
+See [CONTRIBUTING.md](https://github.com/AIGraphia/aigp-python/blob/main/CONTRIBUTING.md)
 
 ## License
 
-MIT License - see [LICENSE](https://github.com/aigp/aigp-python/blob/main/LICENSE)
+MIT License - see [LICENSE](https://github.com/AIGraphia/aigp-python/blob/main/LICENSE)

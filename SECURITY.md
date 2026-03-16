@@ -97,7 +97,7 @@ We don't currently have a formal bug bounty program, but we appreciate responsib
 
 - **Security Issues**: security@aigp.dev
 - **General Questions**: contact@aigp.dev
-- **GitHub**: https://github.com/aigp/aigp
+- **GitHub**: https://github.com/AIGraphia/aigp
 
 ## Hall of Fame
 

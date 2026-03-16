@@ -11,7 +11,7 @@ pnpm add -g @aigraphia/cli
 ### From source
 
 ```bash
-git clone https://github.com/aigp/aigp.git
+git clone https://github.com/AIGraphia/aigp.git
 cd aigp
 pnpm install
 pnpm run build
@@ -199,5 +199,5 @@ pnpm run build
 
 - Documentation: https://aigraphia.com/docs
 - Examples: `packages/protocol/src/examples/`
-- Issues: https://github.com/aigp/aigp/issues
+- Issues: https://github.com/AIGraphia/aigp/issues
 - Discord: https://discord.gg/aigp

@@ -40,6 +40,6 @@ pnpm -r publish --access public
 
 ## Links
 
-- Repository: https://github.com/aigp/aigp
-- Issues: https://github.com/aigp/aigp/issues
+- Repository: https://github.com/AIGraphia/aigp
+- Issues: https://github.com/AIGraphia/aigp/issues
 - Docs: https://aigraphia.com/docs

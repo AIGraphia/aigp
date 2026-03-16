@@ -781,6 +781,6 @@ const result: ValidationResult = diagram.validate();
 ## Resources
 
 - NPM: https://www.npmjs.com/package/@aigraphia/browser
-- GitHub: https://github.com/aigp/aigp/tree/main/packages/browser
+- GitHub: https://github.com/AIGraphia/aigp/tree/main/packages/browser
 - Documentation: https://aigp.dev/docs/browser
 - Examples: https://aigp.dev/examples/browser

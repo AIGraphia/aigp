@@ -3,8 +3,8 @@
 > **Universal JSON Standard for AI-Native Diagrams**
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![npm version](https://badge.fury.io/js/%40aigp%2Fprotocol.svg)](https://www.npmjs.com/package/@aigraphia/protocol)
-[![CI](https://github.com/aigp/aigp/actions/workflows/ci.yml/badge.svg)](https://github.com/aigp/aigp/actions/workflows/ci.yml)
+[![npm version](https://badge.fury.io/js/%40aigraphia%2Fprotocol.svg)](https://www.npmjs.com/package/@aigraphia/protocol)
+[![CI](https://github.com/AIGraphia/aigp/actions/workflows/ci.yml/badge.svg)](https://github.com/AIGraphia/aigp/actions/workflows/ci.yml)
 
 AIGP (AI Graphic Protocol) is an open-source, universal JSON standard designed for AI-native diagram creation. It enables AI agents to generate, transform, and manipulate complex diagrams with semantic understanding, automatic layout, and flexible rendering.
 
@@ -238,7 +238,7 @@ Built with:
 - **Website**: [aigp.dev](https://aigp.dev) *(coming soon)*
 - **Commercial SaaS**: [aigraphia.com](https://aigraphia.com)
 - **npm**: [@aigraphia/protocol](https://www.npmjs.com/package/@aigraphia/protocol)
-- **GitHub**: [github.com/aigp/aigp](https://github.com/aigp/aigp)
+- **GitHub**: [github.com/AIGraphia/aigp](https://github.com/AIGraphia/aigp)
 - **Discord**: [Join our community](https://discord.gg/aigp) *(coming soon)*
 
 ---

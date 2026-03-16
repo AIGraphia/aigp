@@ -413,7 +413,7 @@ The future of diagram generation isn't learning arcane syntax - it's describing 
 
 **Resources:**
 - AIGP Specification: https://aigp.dev/docs/standard
-- JSON Schema: https://github.com/aigp/aigp/blob/main/packages/protocol/src/schema.json
+- JSON Schema: https://github.com/AIGraphia/aigp/blob/main/packages/protocol/src/schema.json
 - Try the CLI: `pnpm install -g @aigraphia/cli`
 - Join Discord: https://discord.gg/aigp
 

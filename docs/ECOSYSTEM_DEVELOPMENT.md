@@ -520,7 +520,7 @@ aigp template search "approval workflow"
 ### Step 1: Fork Repository
 
 ```bash
-git clone https://github.com/aigp/aigp.git
+git clone https://github.com/AIGraphia/aigp.git
 cd aigp
 git checkout -b feature/my-plugin
 ```

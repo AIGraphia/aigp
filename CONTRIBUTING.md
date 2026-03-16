@@ -6,7 +6,7 @@ Thank you for considering contributing to AIGP! This document provides guideline
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/aigp/aigp.git
+   git clone https://github.com/AIGraphia/aigp.git
    cd aigp
    ```
 
@@ -46,7 +46,7 @@ aigp/
 
 ### Reporting Bugs
 
-1. Check if the bug already exists in [Issues](https://github.com/aigp/aigp/issues)
+1. Check if the bug already exists in [Issues](https://github.com/AIGraphia/aigp/issues)
 2. Create a new issue with:
    - Clear title
    - Steps to reproduce
@@ -56,7 +56,7 @@ aigp/
 
 ### Suggesting Features
 
-1. Check existing [Feature Requests](https://github.com/aigp/aigp/issues?q=label%3Aenhancement)
+1. Check existing [Feature Requests](https://github.com/AIGraphia/aigp/issues?q=label%3Aenhancement)
 2. Create an issue describing:
    - Use case
    - Proposed solution
@@ -203,7 +203,7 @@ Maintainers handle releases:
 
 ## Questions?
 
-- Open a [Discussion](https://github.com/aigp/aigp/discussions)
+- Open a [Discussion](https://github.com/AIGraphia/aigp/discussions)
 - Join [Discord](https://discord.gg/aigp)
 - Email: contribute@aigp.dev
 

@@ -243,7 +243,7 @@ Benefits at Level 3 (30 boosts):
 > "Hey! This is interesting but a bit off-topic for this channel. Let's move to #off-topic 👍"
 
 **Feature Requests**
-> "Great idea! Can you open an issue on GitHub with more details? https://github.com/aigp/aigp/issues/new"
+> "Great idea! Can you open an issue on GitHub with more details? https://github.com/AIGraphia/aigp/issues/new"
 
 **Bug Reports**
 > "Thanks for reporting! Can you provide:

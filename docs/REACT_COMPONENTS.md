@@ -779,6 +779,6 @@ import type { DiagramViewerProps, DiagramEditorProps } from '@aigraphia/react';
 ## Resources
 
 - NPM: https://www.npmjs.com/package/@aigraphia/react
-- GitHub: https://github.com/aigp/aigp/tree/main/packages/react
+- GitHub: https://github.com/AIGraphia/aigp/tree/main/packages/react
 - Storybook: https://aigp.dev/storybook/react
 - Documentation: https://aigp.dev/docs/react

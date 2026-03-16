@@ -873,6 +873,6 @@ const diagram = ref({ ... });
 ## Resources
 
 - NPM: https://www.npmjs.com/package/@aigraphia/vue
-- GitHub: https://github.com/aigp/aigp/tree/main/packages/vue
+- GitHub: https://github.com/AIGraphia/aigp/tree/main/packages/vue
 - Documentation: https://aigp.dev/docs/vue
 - Examples: https://aigp.dev/examples/vue

@@ -1043,14 +1043,14 @@ AIGP maintainers will review:
 ## Resources
 
 - **Layout Algorithm Papers**: https://aigp.dev/research/layouts
-- **Example Implementations**: https://github.com/aigp/aigp/tree/main/packages/layout/src
+- **Example Implementations**: https://github.com/AIGraphia/aigp/tree/main/packages/layout/src
 - **Performance Benchmarks**: https://aigp.dev/benchmarks/layout
-- **Community Forum**: https://github.com/aigp/aigp/discussions
+- **Community Forum**: https://github.com/AIGraphia/aigp/discussions
 
 ---
 
 ## Support
 
-- GitHub Issues: https://github.com/aigp/aigp/issues
+- GitHub Issues: https://github.com/AIGraphia/aigp/issues
 - Discord: https://discord.gg/aigp
 - Email: layout@aigp.dev

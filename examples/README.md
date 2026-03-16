@@ -188,7 +188,7 @@ Add your own examples following the existing structure:
 
 - [AIGP Protocol Specification](../docs/PROTOCOL.md)
 - [Quickstart Guide](../docs/QUICKSTART.md)
-- [AIGP GitHub Repository](https://github.com/aigp/aigp)
+- [AIGP GitHub Repository](https://github.com/AIGraphia/aigp)
 
 ---
 

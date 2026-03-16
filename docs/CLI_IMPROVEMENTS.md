@@ -731,6 +731,6 @@ echo "Done!"
 ## Resources
 
 - NPM: https://www.npmjs.com/package/@aigraphia/cli
-- GitHub: https://github.com/aigp/aigp/tree/main/packages/cli
+- GitHub: https://github.com/AIGraphia/aigp/tree/main/packages/cli
 - Documentation: https://aigp.dev/docs/cli
 - Examples: https://aigp.dev/examples/cli
