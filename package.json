@@ -13,10 +13,10 @@
     "format:check": "prettier --check ."
   },
   "devDependencies": {
-    "eslint": "^9.0.0",
-    "turbo": "^2.8.17",
-    "typescript": "^5.9.3",
-    "typescript-eslint": "^8.0.0",
+    "eslint": "^10.2.0",
+    "turbo": "^2.9.3",
+    "typescript": "^6.0.2",
+    "typescript-eslint": "^8.58.0",
     "prettier": "^3.0.0"
   },
   "engines": {
